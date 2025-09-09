@@ -13,7 +13,7 @@ Instructions For Position Matching:
 11. User also have to load all symbols for startegy in quant connect like "self.spy_symbol = self.AddEquity("SPY", Resolution.Daily).Symbol \n self.spy_eq = self.AddEquity("SPY", Resolution.Daily) \n self.spy_eq.SetBuyingPowerModel(NullBuyingPowerModel())" inside "initialize" method.
 12. Change algorithm-type-name in /Lean/Launcher/config.json to "PositionSimulation".
 13. Launch task from VS code.
-14. Then convert position file using QC_position_converter.
+14. Then convert position file inside "/Lean/Launcher/bin/debug/" folder using QC_position_converter.
 15. Now you have positions from quant connect, you can compare them in MS excel.
 16. If any doubt, please contact us, we will setup simulation as per requirement.
 
