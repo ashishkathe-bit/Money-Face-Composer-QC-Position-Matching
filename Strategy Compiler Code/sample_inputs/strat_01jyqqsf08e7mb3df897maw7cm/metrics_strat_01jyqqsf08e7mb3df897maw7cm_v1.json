@@ -1,0 +1,16 @@
+{
+  "strategy_id": "strat_01jyqqsf08e7mb3df897maw7cm",
+  "strategy_name": "\ud83e\uddea BlackSwan Portfolio | Cashen Mod (Invest Copy)",
+  "strategy_description": "https://bit.ly/GenesisLaunch - https://bit.ly/investorcollabdiscord",
+  "version_id": "strat_01jyqqsf08e7mb3df897maw7cm_v1",
+  "version": 1,
+  "cumulative_return": 250.940745,
+  "annualized_return": 43.3787941315422,
+  "sharpe_ratio": 1.01686321904269,
+  "beta": 1.8088,
+  "max_drawdown": 55.4634184932432,
+  "backtest_start_date": "1990-01-01",
+  "backtest_end_date": "2025-06-27",
+  "created_at": "2025-06-27T03:44:36.980583+00:00",
+  "plain_english_summary": "# Strategy: \ud83e\uddea BlackSwan Portfolio | Cashen Mod (Invest Copy)\nSource: https://app.composer.trade/symphony/QKjIRxk3HKoYc5yw8XXD/details\n\n**Complexity**: Medium (5/10)\n**Description**: https://bit.ly/GenesisLaunch - https://bit.ly/investorcollabdiscord\n**Category**: Tactical\n\n## Trading Universe\nThis strategy can trade 6 assets:\n\n\u2022 **Stocks**: SHY, QQQ, TQQQ, UPRO, SQQQ, BIL\n\n## Strategy Settings\n\u2022 **Rebalancing**: Daily\n\u2022 **Initial Capital**: USD 100,000\n\u2022 **Trading Fees**: 0.10% per trade\n\n## Investment Logic\n\n```\n\u2022 Equal Weight Allocation:\n  \u25e6 BlackSwan Portfolio:\n    \u25aa Equal Weight Allocation:\n      - If :\n        - If SHY's returns (5-day) is greater than 0:\n          - Equal Weight Allocation:\n            - If :\n              - If QQQ's cumulative-return (1-day) is less than 3.0:\n                - Buy TQQQ (100% of portfolio)\n                - Buy UPRO (100% of portfolio)\n              - Else branch:\n                - Buy SQQQ (100% of portfolio)\n        - Else branch:\n          - Equal Weight Allocation:\n            - Buy BIL (100% of portfolio)\n```\n\n## Technical Details\n\u2022 **Source Platform**: Composer\n\u2022 **Source ID**: QKjIRxk3HKoYc5yw8XXD\n\u2022 **Created**: June 27, 2025\n\u2022 **Slippage Model**: 0.10% per trade\n"
+}

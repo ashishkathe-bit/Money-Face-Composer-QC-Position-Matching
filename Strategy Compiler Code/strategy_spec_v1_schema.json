@@ -1,0 +1,451 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://moneyface.com/schemas/strategy-spec/v1.0.0",
+  "title": "MoneyFace StrategySpec Schema",
+  "description": "Universal rule-based trading strategy schema",
+  "type": "object",
+  "required": [
+    "meta",
+    "settings",
+    "universe",
+    "logic"
+  ],
+  "properties": {
+    "meta": {
+      "$ref": "#/$defs/meta"
+    },
+    "settings": {
+      "$ref": "#/$defs/settings"
+    },
+    "parameters": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/parameter"
+      },
+      "description": "Optional. Declare run-time inputs that other fields can reference with ${...} syntax."
+    },
+    "universe": {
+      "$ref": "#/$defs/universe"
+    },
+    "logic": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/node",
+          "description": "Single root node"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/node"
+          },
+          "minItems": 1,
+          "description": "Multiple parallel root nodes (e.g., long/short, different asset classes)"
+        }
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "meta": {
+      "type": "object",
+      "required": [
+        "name",
+        "version"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 500
+        },
+        "description": {
+          "type": "string",
+          "maxLength": 5000
+        },
+        "version": {
+          "type": "string",
+          "pattern": "^\\d+\\.\\d+(\\.\\d+)?$"
+        },
+        "category": {
+          "type": "string",
+          "enum": [
+            "momentum",
+            "mean_reversion",
+            "trend_following",
+            "arbitrage",
+            "market_neutral",
+            "long_short",
+            "buy_hold",
+            "tactical",
+            "other"
+          ]
+        }
+      },
+      "additionalProperties": true
+    },
+    "settings": {
+      "type": "object",
+      "required": [
+        "capital",
+        "rebalance"
+      ],
+      "properties": {
+        "start": {
+          "type": "string",
+          "format": "date",
+          "description": "Backtest start date"
+        },
+        "end": {
+          "type": "string",
+          "format": "date",
+          "description": "Backtest end date"
+        },
+        "capital": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Initial capital amount"
+        },
+        "currency": {
+          "type": "string",
+          "default": "USD",
+          "pattern": "^[A-Z]{3}$"
+        },
+        "rebalance": {
+          "enum": [
+            "none",
+            "intraday",
+            "daily",
+            "weekly",
+            "monthly",
+            "quarterly",
+            "yearly"
+          ],
+          "description": "Rebalancing frequency"
+        },
+        "fees": {
+          "$ref": "#/$defs/fees"
+        },
+        "slippage": {
+          "$ref": "#/$defs/slippage"
+        },
+        "benchmark": {
+          "type": "string",
+          "description": "Benchmark symbol for performance comparison"
+        }
+      },
+      "additionalProperties": false
+    },
+    "parameter": {
+      "type": "object",
+      "required": [
+        "id",
+        "type",
+        "default"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[A-Za-z_][A-Za-z0-9_]*$",
+          "description": "Parameter identifier for ${...} references"
+        },
+        "title": {
+          "type": "string",
+          "description": "Human-readable parameter name"
+        },
+        "description": {
+          "type": "string",
+          "description": "Parameter description"
+        },
+        "type": {
+          "enum": [
+            "bool",
+            "int",
+            "float",
+            "string"
+          ],
+          "description": "Parameter data type"
+        },
+        "default": {
+          "type": [
+            "boolean",
+            "number",
+            "string"
+          ],
+          "description": "Default parameter value"
+        },
+        "min": {
+          "type": "number",
+          "description": "Minimum value for numeric parameters"
+        },
+        "max": {
+          "type": "number",
+          "description": "Maximum value for numeric parameters"
+        }
+      },
+      "additionalProperties": false
+    },
+    "universe": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/asset"
+      },
+      "minItems": 1,
+      "description": "Available assets for strategy"
+    },
+    "asset": {
+      "type": "object",
+      "required": [
+        "symbol"
+      ],
+      "properties": {
+        "symbol": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9/.:-]{1,20}$",
+          "description": "Asset ticker symbol"
+        },
+        "name": {
+          "type": "string",
+          "description": "Full asset name"
+        },
+        "assetClass": {
+          "enum": [
+            "EQUITY",
+            "ETF",
+            "FUTURE",
+            "FOREX",
+            "CRYPTO",
+            "OPTION",
+            "BOND",
+            "COMMODITY"
+          ],
+          "description": "Asset classification"
+        }
+      },
+      "additionalProperties": false
+    },
+    "fees": {
+      "type": "object",
+      "properties": {
+        "perOrder": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Fixed fee per order"
+        },
+        "perShare": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Fee per share traded"
+        },
+        "percentage": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "description": "Percentage fee of trade value"
+        }
+      },
+      "additionalProperties": false
+    },
+    "slippage": {
+      "type": "object",
+      "properties": {
+        "model": {
+          "enum": [
+            "fixed",
+            "percentage",
+            "volumeImpact"
+          ],
+          "description": "Slippage calculation method"
+        },
+        "value": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Slippage amount or percentage"
+        }
+      },
+      "additionalProperties": false
+    },
+    "condition": {
+      "type": "object",
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "enum": [
+            "current_price",
+            "sma",
+            "ema",
+            "rsi",
+            "cumulative_return",
+            "moving_avg_price",
+            "moving_avg_return",
+            "std_dev_price",
+            "std_dev_return",
+            "max_drawdown",
+            "volatility",
+            "returns",
+            "drawdown",
+            "vix",
+            "month",
+            "day_of_week",
+            "day_of_month",
+            "day_of_year"
+          ],
+          "description": "Condition name"
+        },
+        "args": {
+          "type": "object",
+          "additionalProperties": {
+            "type": [
+              "number",
+              "string",
+              "boolean"
+            ]
+          },
+          "description": "Condition parameters (period, smoothing, etc.)"
+        },
+        "symbol": {
+          "type": "string",
+          "description": "Symbol to calculate condition for"
+        }
+      },
+      "additionalProperties": false
+    },
+    "expression": {
+      "type": "string",
+      "description": "Infix expression referencing conditions, parameters, literals and operators"
+    },
+    "node": {
+      "type": "object",
+      "required": [
+        "type"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique node identifier"
+        },
+        "type": {
+          "enum": [
+            "group",
+            "condition",
+            "filter",
+            "order",
+            "exit",
+            "expression",
+            "weight"
+          ]
+        },
+        "description": {
+          "type": "string",
+          "description": "Human-readable node description"
+        },
+        "lhs": {
+          "description": "Left-hand side of comparison"
+        },
+        "operator": {
+          "enum": [
+            "gt",
+            "gte",
+            "lt",
+            "lte",
+            "eq",
+            "neq",
+            "crosses_above",
+            "crosses_below"
+          ],
+          "description": "Comparison operator"
+        },
+        "rhs": {
+          "description": "Right-hand side of comparison"
+        },
+        "children": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/node"
+          },
+          "description": "Child nodes"
+        },
+        "universe": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Asset symbols to filter from"
+        },
+        "metric": {
+          "description": "Metric to rank assets by"
+        },
+        "select": {
+          "enum": [
+            "top",
+            "bottom",
+            "middle"
+          ],
+          "description": "Selection method"
+        },
+        "selection": {
+          "description": "Asset selection criteria"
+        },
+        "side": {
+          "enum": [
+            "long",
+            "short"
+          ],
+          "description": "Position direction"
+        },
+        "size_type": {
+          "enum": [
+            "percent_equity",
+            "fixed_qty",
+            "fixed_value",
+            "risk_based"
+          ],
+          "default": "percent_equity",
+          "description": "Position sizing method"
+        },
+        "size": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Position size"
+        },
+        "allocation": {
+          "enum": [
+            "equal",
+            "weighted",
+            "custom"
+          ],
+          "default": "equal",
+          "description": "How to allocate among selected assets"
+        },
+        "weights": {
+          "type": "object",
+          "description": "Custom asset weights"
+        },
+        "exit_type": {
+          "enum": [
+            "take_profit",
+            "stop_loss",
+            "trailing_stop",
+            "time_based",
+            "signal_based"
+          ],
+          "description": "Type of exit condition"
+        },
+        "qty_percent": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100,
+          "default": 100,
+          "description": "Percentage of position to exit"
+        },
+        "symbol_filter": {
+          "type": "string",
+          "description": "Symbol filter"
+        }
+      },
+      "additionalProperties": true
+    }
+  }
+}

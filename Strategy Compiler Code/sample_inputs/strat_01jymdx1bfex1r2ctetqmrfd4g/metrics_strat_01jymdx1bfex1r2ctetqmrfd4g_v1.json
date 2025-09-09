@@ -1,0 +1,16 @@
+{
+  "strategy_id": "strat_01jymdx1bfex1r2ctetqmrfd4g",
+  "strategy_name": "Bitcoin Strategy by Derecknielsen (Under Construction)",
+  "strategy_description": "Updated: 11/8/22",
+  "version_id": "strat_01jymdx1bfex1r2ctetqmrfd4g_v1",
+  "version": 1,
+  "cumulative_return": 7.960732,
+  "annualized_return": 109.959233524732,
+  "sharpe_ratio": 1.28476410739232,
+  "beta": 1.1004,
+  "max_drawdown": 64.9010447517331,
+  "backtest_start_date": "1990-01-01",
+  "backtest_end_date": "2025-06-25",
+  "created_at": "2025-06-25T20:54:05.077376+00:00",
+  "plain_english_summary": "# Strategy: Bitcoin Strategy by Derecknielsen (Under Construction)\nSource: https://app.composer.trade/symphony/6nmjZHlRmBDGdwIpKycU/details\n\n**Complexity**: High (7/10)\n**Description**: Updated: 11/8/22\n**Category**: Tactical\n\n## Trading Universe\nThis strategy can trade 6 assets:\n\n\u2022 **Stocks**: SPY, MSTR, BITO, BITI, BSV, TBT\n\n## Strategy Settings\n\u2022 **Rebalancing**: Daily\n\u2022 **Initial Capital**: USD 100,000\n\u2022 **Trading Fees**: 0.10% per trade\n\n## Investment Logic\n\n```\n\u2022 Equal Weight Allocation:\n  \u25e6 If :\n    \u25aa If SPY's current-price is greater than SPY's moving-average-price (200-day):\n      - Buy MSTR (100% of portfolio)\n    \u25aa Else branch:\n      - Equal Weight Allocation:\n        - If :\n          - If BITO's current-price is less than BITO's moving-average-price (15-day):\n            - Equal Weight Allocation:\n              - Select the top 1 asset by RSI (Relative Strength Index) (10-day) from: BITI, BSV, TBT\n          - Else branch:\n            - Equal Weight Allocation:\n              - If :\n                - If BITO's RSI (Relative Strength Index) (10-day) is greater than 59.0:\n                  - Buy BITI (100% of portfolio)\n                - Else branch:\n                  - Buy MSTR (100% of portfolio)\n```\n\n## Technical Details\n\u2022 **Source Platform**: Composer\n\u2022 **Source ID**: 6nmjZHlRmBDGdwIpKycU\n\u2022 **Created**: June 25, 2025\n\u2022 **Slippage Model**: 0.10% per trade\n"
+}

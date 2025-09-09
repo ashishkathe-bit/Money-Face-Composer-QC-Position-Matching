@@ -1,0 +1,16 @@
+{
+  "strategy_id": "strat_01jzp65t29ejcvd85r9gxtqgan",
+  "strategy_name": "\u2622\ufe0f NASDAQ-X DeETF | $Deez | BT - 14NOV2019 - AR: 346.1% DD: 38.8% - Live (Buy Copy)",
+  "strategy_description": "",
+  "version_id": "strat_01jzp65t29ejcvd85r9gxtqgan_v1",
+  "version": 1,
+  "cumulative_return": 438.533674,
+  "annualized_return": 60.1606798957112,
+  "sharpe_ratio": 1.57814718687886,
+  "beta": 1.2328,
+  "max_drawdown": 25.6603559433822,
+  "backtest_start_date": "2012-07-27",
+  "backtest_end_date": "2025-07-08",
+  "created_at": "2025-07-09T06:33:14.458022+00:00",
+  "plain_english_summary": "# Strategy: \u2622\ufe0f NASDAQ-X DeETF | $Deez | BT - 14NOV2019 - AR: 346.1% DD: 38.8% - Live (Buy Copy)\nSource: https://app.composer.trade/symphony/A58i2tYvnHUlWVMkA4eZ/details\n\n**Complexity**: High (7/10)\n**Category**: Tactical\n\n## Trading Universe\nThis strategy can trade 25 assets:\n\n\u2022 **Stocks**: SPY, VIXM, TECL, TNA, SPXL, MSFT, AAPL, GD, RTX, NOC, AMZN, GOOGL, META, PEP, MSTR, NVDA, TSLA, AMD, INTC, NFLX, AMGN, CSCO, TMUS, AVGO, SBUX\n\n## Strategy Settings\n\u2022 **Rebalancing**: Daily\n\u2022 **Initial Capital**: USD 100,000\n\u2022 **Trading Fees**: 0.10% per trade\n\n## Investment Logic\n\n```\n\u2022 Equal Weight Allocation:\n  \u25e6 V 1.2 | \u2622\ufe0f NASDAQ-X DeETF | Deez | AR: 83% DD: 25.6% - 1JAN2019:\n    \u25aa Equal Weight Allocation:\n      - If :\n        - If SPY's RSI (Relative Strength Index) (14-day) is greater than 77.0:\n          - Equal Weight Allocation:\n            - Buy VIXM (100% of portfolio)\n        - Else branch:\n          - Equal Weight Allocation:\n            - If :\n              - If SPY's RSI (Relative Strength Index) (14-day) is less than 30.0:\n                - Equal Weight Allocation:\n                  - Select the top 2 assets by cumulative-return (45-day) from: TECL, TNA, SPXL\n              - Else branch:\n                - Equal Weight Allocation:\n                  - Select the top 3 assets by RSI (Relative Strength Index) (46-day)\n```\n\n## Technical Details\n\u2022 **Source Platform**: Composer\n\u2022 **Source ID**: A58i2tYvnHUlWVMkA4eZ\n\u2022 **Created**: July 08, 2025\n\u2022 **Slippage Model**: 0.10% per trade\n"
+}

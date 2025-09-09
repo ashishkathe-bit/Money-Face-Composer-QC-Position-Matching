@@ -1,0 +1,210 @@
+{
+  "meta": {
+    "name": "best rebalancer | Deez | ",
+    "description": "",
+    "version": "1.0",
+    "source": "composer",
+    "source_id": "bCIMJ7nVHIQ2CCeoypYh",
+    "source_url": "https://app.composer.trade/symphony/bCIMJ7nVHIQ2CCeoypYh/details",
+    "category": "tactical",
+    "complexity_score": 4,
+    "created_at": "2025-06-25T20:59:59.222181Z",
+    "updated_at": "2025-06-25T20:59:59.222198Z"
+  },
+  "settings": {
+    "capital": 100000.0,
+    "currency": "USD",
+    "rebalance": "none",
+    "fees": {
+      "percentage": 0.001
+    },
+    "slippage": {
+      "model": "percentage",
+      "value": 0.001
+    }
+  },
+  "universe": [
+    {
+      "symbol": "QQQ",
+      "name": "",
+      "assetClass": "EQUITY"
+    },
+    {
+      "symbol": "UVXY",
+      "name": "ProShares Ultra VIX Short-Term Futures ETF",
+      "assetClass": "EQUITY",
+      "exchange": "BATS"
+    },
+    {
+      "symbol": "MSTR",
+      "name": "MicroStrategy Incorporated Class A",
+      "assetClass": "EQUITY",
+      "exchange": "XNAS"
+    },
+    {
+      "symbol": "BITO",
+      "name": "ProShares Bitcoin Strategy ETF",
+      "assetClass": "EQUITY",
+      "exchange": "ARCX"
+    },
+    {
+      "symbol": "COIN",
+      "name": "Coinbase Global, Inc. Class A",
+      "assetClass": "EQUITY",
+      "exchange": "XNAS"
+    },
+    {
+      "symbol": "RIOT",
+      "name": "Riot Platforms, Inc.",
+      "assetClass": "EQUITY",
+      "exchange": "XNAS"
+    },
+    {
+      "symbol": "MARA",
+      "name": "Marathon Digital Holdings Inc",
+      "assetClass": "EQUITY",
+      "exchange": "XNAS"
+    },
+    {
+      "symbol": "BITF",
+      "name": "Bitfarms Ltd.",
+      "assetClass": "EQUITY",
+      "exchange": "XNAS"
+    }
+  ],
+  "logic": {
+    "type": "group",
+    "id": "a5cc233c-bd4d-4398-893e-d3121c75d746",
+    "description": "Group: wt-cash-equal",
+    "children": [
+      {
+        "type": "condition",
+        "id": "01161c94-3186-4fc8-877a-9c595e670bd0",
+        "description": "Conditional logic 1",
+        "children": [
+          {
+            "type": "condition",
+            "id": "0b8affdc-ab14-44a9-b0c0-f921ec211b36",
+            "description": "Condition: relative-strength-index gt 75",
+            "lhs": {
+              "name": "rsi",
+              "args": {
+                "period": 10
+              },
+              "symbol": "QQQ"
+            },
+            "operator": "gt",
+            "rhs": 75.0,
+            "children": [
+              {
+                "type": "order",
+                "id": "89681898-92c5-4feb-b07d-69521d568b2a",
+                "description": "ProShares Ultra VIX Short-Term Futures ETF",
+                "side": "long",
+                "size_type": "percent_equity",
+                "size": 100.0,
+                "allocation": "weighted",
+                "weights": {
+                  "UVXY": 1.0
+                },
+                "symbol_filter": "UVXY"
+              }
+            ]
+          },
+          {
+            "type": "group",
+            "id": "c203db38-d53d-49da-bd06-bf318974a49d",
+            "description": "Else branch",
+            "children": [
+              {
+                "type": "group",
+                "id": "f50d4eca-8f7b-49eb-ac98-41541092f528",
+                "description": "Group: wt-cash-equal",
+                "children": [
+                  {
+                    "type": "order",
+                    "id": "09e89f84-ad5e-494a-ab4e-ec2ba32d9d6d",
+                    "description": "MicroStrategy Incorporated Class A",
+                    "side": "long",
+                    "size_type": "percent_equity",
+                    "size": 100.0,
+                    "allocation": "weighted",
+                    "weights": {
+                      "MSTR": 1.0
+                    },
+                    "symbol_filter": "MSTR"
+                  },
+                  {
+                    "type": "order",
+                    "id": "baeb516a-8838-4104-8f56-1c7711ac613c",
+                    "description": "ProShares Bitcoin Strategy ETF",
+                    "side": "long",
+                    "size_type": "percent_equity",
+                    "size": 100.0,
+                    "allocation": "weighted",
+                    "weights": {
+                      "BITO": 1.0
+                    },
+                    "symbol_filter": "BITO"
+                  },
+                  {
+                    "type": "order",
+                    "id": "3217ada8-52c0-4ccb-99c8-26de9d69915a",
+                    "description": "Coinbase Global, Inc. Class A",
+                    "side": "long",
+                    "size_type": "percent_equity",
+                    "size": 100.0,
+                    "allocation": "weighted",
+                    "weights": {
+                      "COIN": 1.0
+                    },
+                    "symbol_filter": "COIN"
+                  },
+                  {
+                    "type": "order",
+                    "id": "596c6bc7-29a8-4308-b50f-e7bf2da70f8f",
+                    "description": "Riot Platforms, Inc.",
+                    "side": "long",
+                    "size_type": "percent_equity",
+                    "size": 100.0,
+                    "allocation": "weighted",
+                    "weights": {
+                      "RIOT": 1.0
+                    },
+                    "symbol_filter": "RIOT"
+                  },
+                  {
+                    "type": "order",
+                    "id": "4b008bf6-74d7-4f6f-ad73-e42f136687e9",
+                    "description": "Marathon Digital Holdings Inc",
+                    "side": "long",
+                    "size_type": "percent_equity",
+                    "size": 100.0,
+                    "allocation": "weighted",
+                    "weights": {
+                      "MARA": 1.0
+                    },
+                    "symbol_filter": "MARA"
+                  },
+                  {
+                    "type": "order",
+                    "id": "43313634-9399-4719-9d4c-36a574a79133",
+                    "description": "Bitfarms Ltd.",
+                    "side": "long",
+                    "size_type": "percent_equity",
+                    "size": 100.0,
+                    "allocation": "weighted",
+                    "weights": {
+                      "BITF": 1.0
+                    },
+                    "symbol_filter": "BITF"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

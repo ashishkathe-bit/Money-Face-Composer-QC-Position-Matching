@@ -1,0 +1,1122 @@
+{
+  "meta": {
+    "name": "V2.1a Holy Grail Simplified (Invest Copy)",
+    "description": "",
+    "version": "1.0",
+    "source": "composer",
+    "source_id": "D6wJxBE3ttl9rDxZiL8P",
+    "source_url": "https://app.composer.trade/symphony/D6wJxBE3ttl9rDxZiL8P/details",
+    "category": "tactical",
+    "complexity_score": 9,
+    "created_at": "2025-06-27T03:55:07.048383Z",
+    "updated_at": "2025-06-27T03:55:07.048405Z"
+  },
+  "settings": {
+    "capital": 100000.0,
+    "currency": "USD",
+    "rebalance": "daily",
+    "fees": {
+      "percentage": 0.001
+    },
+    "slippage": {
+      "model": "percentage",
+      "value": 0.001
+    }
+  },
+  "universe": [
+    {
+      "symbol": "SPY",
+      "name": "",
+      "assetClass": "EQUITY"
+    },
+    {
+      "symbol": "QQQ",
+      "name": "",
+      "assetClass": "EQUITY"
+    },
+    {
+      "symbol": "TMF",
+      "name": "Direxion Daily 20+ Year Treasury Bull 3X Shares",
+      "assetClass": "EQUITY",
+      "exchange": "ARCX"
+    },
+    {
+      "symbol": "UUP",
+      "name": "Invesco DB US Dollar Index Bullish Fund",
+      "assetClass": "EQUITY",
+      "exchange": "ARCX"
+    },
+    {
+      "symbol": "VIXY",
+      "name": "ProShares VIX Short-Term Futures ETF",
+      "assetClass": "EQUITY",
+      "exchange": "BATS"
+    },
+    {
+      "symbol": "XLP",
+      "name": "Consumer Staples Select Sector SPDR Fund",
+      "assetClass": "EQUITY",
+      "exchange": "ARCX"
+    },
+    {
+      "symbol": "SPLV",
+      "name": "Invesco S&P 500 Low Volatility ETF",
+      "assetClass": "EQUITY",
+      "exchange": "ARCX"
+    },
+    {
+      "symbol": "TQQQ",
+      "name": "ProShares UltraPro QQQ",
+      "assetClass": "EQUITY",
+      "exchange": "XNAS"
+    },
+    {
+      "symbol": "STIP",
+      "name": "iShares 0-5 Year TIPS Bond ETF",
+      "assetClass": "EQUITY",
+      "exchange": "ARCX"
+    },
+    {
+      "symbol": "TECL",
+      "name": "Direxion Daily Technology Bull 3x Shares",
+      "assetClass": "EQUITY",
+      "exchange": "ARCX"
+    },
+    {
+      "symbol": "SHY",
+      "name": "iShares 1-3 Year Treasury Bond ETF",
+      "assetClass": "EQUITY",
+      "exchange": "XNAS"
+    },
+    {
+      "symbol": "UPRO",
+      "name": "ProShares UltraPro S&P500",
+      "assetClass": "EQUITY",
+      "exchange": "ARCX"
+    },
+    {
+      "symbol": "TMV",
+      "name": "Direxion Daily 20+ Year Treasury Bear 3x Shares",
+      "assetClass": "EQUITY",
+      "exchange": "ARCX"
+    },
+    {
+      "symbol": "QID",
+      "name": "ProShares UltraShort QQQ",
+      "assetClass": "EQUITY",
+      "exchange": "ARCX"
+    },
+    {
+      "symbol": "SQQQ",
+      "name": "ProShares UltraPro Short QQQ",
+      "assetClass": "EQUITY",
+      "exchange": "XNAS"
+    },
+    {
+      "symbol": "UDN",
+      "name": "Invesco DB US Dollar Index Bearish Fund",
+      "assetClass": "EQUITY",
+      "exchange": "ARCX"
+    },
+    {
+      "symbol": "SOXL",
+      "name": "Direxion Daily Semiconductor Bull 3x Shares",
+      "assetClass": "EQUITY",
+      "exchange": "ARCX"
+    },
+    {
+      "symbol": "SHV",
+      "name": "iShares Short Treasury Bond ETF",
+      "assetClass": "EQUITY",
+      "exchange": "XNAS"
+    },
+    {
+      "symbol": "QLD",
+      "name": "",
+      "assetClass": "EQUITY"
+    },
+    {
+      "symbol": "TLT",
+      "name": "iShares 20+ Year Treasury Bond ETF",
+      "assetClass": "EQUITY",
+      "exchange": "XNAS"
+    },
+    {
+      "symbol": "UGL",
+      "name": "ProShares Ultra Gold",
+      "assetClass": "EQUITY",
+      "exchange": "ARCX"
+    }
+  ],
+  "logic": {
+    "type": "group",
+    "id": "c88ed846-29e9-486d-a0a6-c8f3794d20e8",
+    "description": "Group: wt-cash-equal",
+    "children": [
+      {
+        "type": "group",
+        "id": "75ccd834-b94a-4810-9da8-dc7189fb0885",
+        "description": "V2.1a Holy Grail Simplified",
+        "children": [
+          {
+            "type": "group",
+            "id": "6e216c4d-f9ce-40d9-95ab-0e6aab8055d7",
+            "description": "Group: wt-cash-equal",
+            "children": [
+              {
+                "type": "condition",
+                "id": "e7cbfedc-100e-4b1a-8314-f0a89133b5f5",
+                "description": "Conditional logic 1",
+                "children": [
+                  {
+                    "type": "condition",
+                    "id": "e43f85ce-5e33-4a15-8e09-6f90a9442dad",
+                    "description": "Condition: current-price gt SPY",
+                    "lhs": {
+                      "name": "current-price",
+                      "args": {
+                        "period": 2
+                      },
+                      "symbol": "SPY"
+                    },
+                    "operator": "gt",
+                    "rhs": {
+                      "name": "moving-average-price",
+                      "args": {
+                        "period": 200
+                      },
+                      "symbol": "SPY"
+                    },
+                    "children": [
+                      {
+                        "type": "group",
+                        "id": "8e2dcf5e-5459-4069-974f-3ca8f186853d",
+                        "description": "Group: wt-cash-equal",
+                        "children": [
+                          {
+                            "type": "condition",
+                            "id": "6f934d73-d374-44c5-a3ad-c3042b9172a0",
+                            "description": "Conditional logic 2",
+                            "children": [
+                              {
+                                "type": "condition",
+                                "id": "22ded9fe-cc68-4c4d-86e4-4ff28402c490",
+                                "description": "Condition: relative-strength-index gt 81",
+                                "lhs": {
+                                  "name": "rsi",
+                                  "args": {
+                                    "period": 10
+                                  },
+                                  "symbol": "QQQ"
+                                },
+                                "operator": "gt",
+                                "rhs": 81.0,
+                                "children": [
+                                  {
+                                    "type": "group",
+                                    "id": "517aebce-31b4-49b1-bd0f-212c47a9eddb",
+                                    "description": "Group: wt-cash-equal",
+                                    "children": [
+                                      {
+                                        "type": "group",
+                                        "id": "2cc6e42f-0e2a-47d1-b45b-b5bf63aeb25f",
+                                        "description": "Overbought Group - 3d MA",
+                                        "children": [
+                                          {
+                                            "type": "group",
+                                            "id": "04078e33-dc4c-4f1a-88e8-a6447fe18e4d",
+                                            "description": "Group: wt-cash-equal",
+                                            "children": [
+                                              {
+                                                "type": "filter",
+                                                "id": "9cbf7d46-d324-4b36-bc9e-027cb7ea9271",
+                                                "description": "Select top 2 by moving-average-return",
+                                                "universe": [
+                                                  "TMF",
+                                                  "UUP",
+                                                  "VIXY",
+                                                  "XLP",
+                                                  "SPLV"
+                                                ],
+                                                "select": "top",
+                                                "selection": {
+                                                  "n": 2
+                                                },
+                                                "metric": {
+                                                  "name": "returns",
+                                                  "args": {
+                                                    "period": 3
+                                                  }
+                                                },
+                                                "allocation": "weighted",
+                                                "size": 0.0,
+                                                "weights": {
+                                                  "TMF": 0.0,
+                                                  "UUP": 0.0,
+                                                  "VIXY": 0.0,
+                                                  "XLP": 0.0,
+                                                  "SPLV": 0.0
+                                                }
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "type": "group",
+                                "id": "f2eec50a-3eed-43a8-883f-58c7e277f7b7",
+                                "description": "Else branch",
+                                "children": [
+                                  {
+                                    "type": "group",
+                                    "id": "8c378250-3766-4cb6-8102-cfb9b913391c",
+                                    "description": "Group: wt-cash-equal",
+                                    "children": [
+                                      {
+                                        "type": "condition",
+                                        "id": "dd5af46b-6695-4fc7-a75a-3cdfc9f96fde",
+                                        "description": "Conditional logic 3",
+                                        "children": [
+                                          {
+                                            "type": "condition",
+                                            "id": "43275ca6-4b2a-443a-ba83-ce235941e8de",
+                                            "description": "Condition: relative-strength-index gt 80",
+                                            "lhs": {
+                                              "name": "rsi",
+                                              "args": {
+                                                "period": 10
+                                              },
+                                              "symbol": "SPY"
+                                            },
+                                            "operator": "gt",
+                                            "rhs": 80.0,
+                                            "children": [
+                                              {
+                                                "type": "group",
+                                                "id": "23c8ce9b-c71f-4369-a33c-366a46be9c94",
+                                                "description": "Group: wt-cash-equal",
+                                                "children": [
+                                                  {
+                                                    "type": "group",
+                                                    "id": "a969b515-cca0-43d0-830c-b19be4c36388",
+                                                    "description": "Overbought Group - 3d MA",
+                                                    "children": [
+                                                      {
+                                                        "type": "group",
+                                                        "id": "539eb0df-7b99-4212-a964-e5aff7c71691",
+                                                        "description": "Group: wt-cash-equal",
+                                                        "children": [
+                                                          {
+                                                            "type": "filter",
+                                                            "id": "9908b204-41f9-478a-9ee0-97ac5d2de66f",
+                                                            "description": "Select top 2 by moving-average-return",
+                                                            "universe": [
+                                                              "TMF",
+                                                              "UUP",
+                                                              "VIXY",
+                                                              "XLP",
+                                                              "SPLV"
+                                                            ],
+                                                            "select": "top",
+                                                            "selection": {
+                                                              "n": 2
+                                                            },
+                                                            "metric": {
+                                                              "name": "returns",
+                                                              "args": {
+                                                                "period": 3
+                                                              }
+                                                            },
+                                                            "allocation": "weighted",
+                                                            "size": 0.0,
+                                                            "weights": {
+                                                              "TMF": 0.0,
+                                                              "UUP": 0.0,
+                                                              "VIXY": 0.0,
+                                                              "XLP": 0.0,
+                                                              "SPLV": 0.0
+                                                            }
+                                                          }
+                                                        ]
+                                                      }
+                                                    ]
+                                                  }
+                                                ]
+                                              }
+                                            ]
+                                          },
+                                          {
+                                            "type": "group",
+                                            "id": "44c04a2d-5bfc-4da6-a652-ec61eda4d332",
+                                            "description": "Else branch",
+                                            "children": [
+                                              {
+                                                "type": "group",
+                                                "id": "d391cba5-8b5f-421a-9bc9-b8ccbc132e37",
+                                                "description": "Group: wt-cash-equal",
+                                                "children": [
+                                                  {
+                                                    "type": "group",
+                                                    "id": "0a8c8415-7bf3-4bfa-bf60-218b258a8b15",
+                                                    "description": "Group",
+                                                    "children": [
+                                                      {
+                                                        "type": "group",
+                                                        "id": "7fa7b95d-6aea-4b1d-a6e0-3f6205cd3114",
+                                                        "description": "Group: wt-cash-equal",
+                                                        "children": [
+                                                          {
+                                                            "type": "condition",
+                                                            "id": "270d9f72-a9c2-4703-9fe1-cd37cf6d3b27",
+                                                            "description": "Conditional logic 4",
+                                                            "children": [
+                                                              {
+                                                                "type": "condition",
+                                                                "id": "cbd8ba6f-1319-46fc-a682-24047c79bf71",
+                                                                "description": "Condition: relative-strength-index gt 65",
+                                                                "lhs": {
+                                                                  "name": "rsi",
+                                                                  "args": {
+                                                                    "period": 10
+                                                                  },
+                                                                  "symbol": "QQQ"
+                                                                },
+                                                                "operator": "gt",
+                                                                "rhs": 65.0,
+                                                                "children": [
+                                                                  {
+                                                                    "type": "order",
+                                                                    "id": "3e7c92bf-3d94-4bfc-b1eb-e19ec3b17fd9",
+                                                                    "description": "ProShares UltraPro QQQ",
+                                                                    "side": "long",
+                                                                    "size_type": "percent_equity",
+                                                                    "size": 100.0,
+                                                                    "allocation": "weighted",
+                                                                    "weights": {
+                                                                      "TQQQ": 1.0
+                                                                    },
+                                                                    "symbol_filter": "TQQQ"
+                                                                  }
+                                                                ]
+                                                              },
+                                                              {
+                                                                "type": "group",
+                                                                "id": "cca6305e-7a12-4b3f-ac54-27e544c2a5a1",
+                                                                "description": "Else branch",
+                                                                "children": [
+                                                                  {
+                                                                    "type": "group",
+                                                                    "id": "12568731-b0f1-4471-8de8-12c9c7efc93d",
+                                                                    "description": "Group: wt-cash-equal",
+                                                                    "children": [
+                                                                      {
+                                                                        "type": "filter",
+                                                                        "id": "50db6a62-02dd-4ed0-8636-d32587e113fd",
+                                                                        "description": "Select bottom 1 by relative-strength-index",
+                                                                        "universe": [
+                                                                          "TQQQ",
+                                                                          "STIP"
+                                                                        ],
+                                                                        "select": "bottom",
+                                                                        "selection": {
+                                                                          "n": 1
+                                                                        },
+                                                                        "metric": {
+                                                                          "name": "rsi",
+                                                                          "args": {
+                                                                            "period": 11
+                                                                          }
+                                                                        },
+                                                                        "allocation": "weighted",
+                                                                        "size": 0.0,
+                                                                        "weights": {
+                                                                          "TQQQ": 0.0,
+                                                                          "STIP": 0.0
+                                                                        }
+                                                                      }
+                                                                    ]
+                                                                  }
+                                                                ]
+                                                              }
+                                                            ]
+                                                          }
+                                                        ]
+                                                      }
+                                                    ]
+                                                  }
+                                                ]
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "group",
+                    "id": "85d2f1d4-b858-4273-9f75-f564ed5a4be8",
+                    "description": "Else branch",
+                    "children": [
+                      {
+                        "type": "group",
+                        "id": "6970805f-f85b-4136-9885-0578a16a062a",
+                        "description": "Group: wt-cash-equal",
+                        "children": [
+                          {
+                            "type": "condition",
+                            "id": "1ec6d04c-7c41-48a1-9ff5-b03aad6a3a00",
+                            "description": "Conditional logic 5",
+                            "children": [
+                              {
+                                "type": "condition",
+                                "id": "a1dceb24-eb94-4544-a055-dd84bc8d1211",
+                                "description": "Condition: relative-strength-index lt 30",
+                                "lhs": {
+                                  "name": "rsi",
+                                  "args": {
+                                    "period": 10
+                                  },
+                                  "symbol": "QQQ"
+                                },
+                                "operator": "lt",
+                                "rhs": 30.0,
+                                "children": [
+                                  {
+                                    "type": "group",
+                                    "id": "0d36fe28-fbe7-4bd3-a013-63e36910e163",
+                                    "description": "Group: wt-cash-equal",
+                                    "children": [
+                                      {
+                                        "type": "filter",
+                                        "id": "76f942f5-36d5-4294-952f-8c3afe65c0e7",
+                                        "description": "Select bottom 1 by relative-strength-index",
+                                        "universe": [
+                                          "TECL",
+                                          "SHY"
+                                        ],
+                                        "select": "bottom",
+                                        "selection": {
+                                          "n": 1
+                                        },
+                                        "metric": {
+                                          "name": "rsi",
+                                          "args": {
+                                            "period": 11
+                                          }
+                                        }
+                                      }
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "type": "group",
+                                "id": "339a32ea-d45d-41f5-8bf8-13fb51e93177",
+                                "description": "Else branch",
+                                "children": [
+                                  {
+                                    "type": "group",
+                                    "id": "42823455-1995-4b00-9c47-8b37f20a5c42",
+                                    "description": "Group: wt-cash-equal",
+                                    "children": [
+                                      {
+                                        "type": "condition",
+                                        "id": "630ef7ef-21f3-4a7c-bdc5-f1894c2f215e",
+                                        "description": "Conditional logic 6",
+                                        "children": [
+                                          {
+                                            "type": "condition",
+                                            "id": "fd526b26-fa47-46ff-81a9-3d17a87b3b1e",
+                                            "description": "Condition: relative-strength-index lt 30",
+                                            "lhs": {
+                                              "name": "rsi",
+                                              "args": {
+                                                "period": 10
+                                              },
+                                              "symbol": "SPY"
+                                            },
+                                            "operator": "lt",
+                                            "rhs": 30.0,
+                                            "children": [
+                                              {
+                                                "type": "group",
+                                                "id": "2f634c7e-bf51-4a89-acd6-a3f1e06edc26",
+                                                "description": "Group: wt-cash-equal",
+                                                "children": [
+                                                  {
+                                                    "type": "filter",
+                                                    "id": "32bec65d-5ac3-4f2d-badc-4e087b8dfe7e",
+                                                    "description": "Select bottom 1 by relative-strength-index",
+                                                    "universe": [
+                                                      "UPRO",
+                                                      "SHY"
+                                                    ],
+                                                    "select": "bottom",
+                                                    "selection": {
+                                                      "n": 1
+                                                    },
+                                                    "metric": {
+                                                      "name": "rsi",
+                                                      "args": {
+                                                        "period": 11
+                                                      }
+                                                    }
+                                                  }
+                                                ]
+                                              }
+                                            ]
+                                          },
+                                          {
+                                            "type": "group",
+                                            "id": "0fc4e90d-1cdc-42c4-9ed8-668185800758",
+                                            "description": "Else branch",
+                                            "children": [
+                                              {
+                                                "type": "group",
+                                                "id": "0c894cfe-0339-400b-86d4-f916c272a553",
+                                                "description": "Group: wt-cash-equal",
+                                                "children": [
+                                                  {
+                                                    "type": "condition",
+                                                    "id": "06636177-fd2b-4288-9747-4f93a9c56ff3",
+                                                    "description": "Conditional logic 7",
+                                                    "children": [
+                                                      {
+                                                        "type": "condition",
+                                                        "id": "fa8d7d13-04e3-4e5f-bb57-b0e7f339732e",
+                                                        "description": "Condition: cumulative-return lt -11",
+                                                        "lhs": {
+                                                          "name": "cumulative-return",
+                                                          "args": {
+                                                            "period": 6
+                                                          },
+                                                          "symbol": "TQQQ"
+                                                        },
+                                                        "operator": "lt",
+                                                        "rhs": -11.0,
+                                                        "children": [
+                                                          {
+                                                            "type": "group",
+                                                            "id": "e8ac10bc-b4d1-4f93-bb9e-036f155dd0fb",
+                                                            "description": "Buy the dips. Sell the rips. V2",
+                                                            "children": [
+                                                              {
+                                                                "type": "group",
+                                                                "id": "374eac94-a060-4f36-87a2-df2b67fb8889",
+                                                                "description": "Group: wt-cash-equal",
+                                                                "children": [
+                                                                  {
+                                                                    "type": "condition",
+                                                                    "id": "d1eda7cd-9b48-414e-b149-7be51dce9720",
+                                                                    "description": "Conditional logic 8",
+                                                                    "children": [
+                                                                      {
+                                                                        "type": "condition",
+                                                                        "id": "a1f97281-9e0f-41d9-9263-9278723a5796",
+                                                                        "description": "Condition: cumulative-return gt 5.5",
+                                                                        "lhs": {
+                                                                          "name": "cumulative-return",
+                                                                          "args": {
+                                                                            "period": 1
+                                                                          },
+                                                                          "symbol": "TQQQ"
+                                                                        },
+                                                                        "operator": "gt",
+                                                                        "rhs": 5.5,
+                                                                        "children": [
+                                                                          {
+                                                                            "type": "group",
+                                                                            "id": "a31bbbe4-5564-4ab7-b3f2-dddac969e479",
+                                                                            "description": "Group: wt-cash-equal",
+                                                                            "children": [
+                                                                              {
+                                                                                "type": "group",
+                                                                                "id": "481f4539-8950-43d2-850b-b67091593c87",
+                                                                                "description": "BSC Group",
+                                                                                "children": [
+                                                                                  {
+                                                                                    "type": "group",
+                                                                                    "id": "cc6c98d8-4f51-42a8-9e66-16f0c7d4676c",
+                                                                                    "description": "Group: wt-cash-equal",
+                                                                                    "children": [
+                                                                                      {
+                                                                                        "type": "filter",
+                                                                                        "id": "d9257665-c8d0-4dcc-8a42-fb7c6acfd641",
+                                                                                        "description": "Select top 2 by moving-average-return",
+                                                                                        "universe": [
+                                                                                          "VIXY",
+                                                                                          "TMV",
+                                                                                          "TMF",
+                                                                                          "QID",
+                                                                                          "UUP",
+                                                                                          "SPLV",
+                                                                                          "XLP"
+                                                                                        ],
+                                                                                        "select": "top",
+                                                                                        "selection": {
+                                                                                          "n": 2
+                                                                                        },
+                                                                                        "metric": {
+                                                                                          "name": "returns",
+                                                                                          "args": {
+                                                                                            "period": 10
+                                                                                          }
+                                                                                        },
+                                                                                        "allocation": "weighted",
+                                                                                        "size": 100.0,
+                                                                                        "weights": {
+                                                                                          "VIXY": 1.0,
+                                                                                          "TMV": 1.0,
+                                                                                          "TMF": 1.0,
+                                                                                          "QID": 1.0,
+                                                                                          "UUP": 1.0,
+                                                                                          "SPLV": 1.0,
+                                                                                          "XLP": 1.0
+                                                                                        }
+                                                                                      },
+                                                                                      {
+                                                                                        "type": "filter",
+                                                                                        "id": "85da20d4-101f-4791-9e1a-46f6e42cc3ed",
+                                                                                        "description": "Select top 2 by moving-average-return",
+                                                                                        "universe": [
+                                                                                          "VIXY",
+                                                                                          "TMV",
+                                                                                          "TMF",
+                                                                                          "QID",
+                                                                                          "UUP",
+                                                                                          "SPLV",
+                                                                                          "XLP"
+                                                                                        ],
+                                                                                        "select": "top",
+                                                                                        "selection": {
+                                                                                          "n": 2
+                                                                                        },
+                                                                                        "metric": {
+                                                                                          "name": "returns",
+                                                                                          "args": {
+                                                                                            "period": 3
+                                                                                          }
+                                                                                        },
+                                                                                        "allocation": "weighted",
+                                                                                        "size": 100.0,
+                                                                                        "weights": {
+                                                                                          "VIXY": 1.0,
+                                                                                          "TMV": 1.0,
+                                                                                          "TMF": 1.0,
+                                                                                          "QID": 1.0,
+                                                                                          "UUP": 1.0,
+                                                                                          "SPLV": 1.0,
+                                                                                          "XLP": 1.0
+                                                                                        }
+                                                                                      }
+                                                                                    ]
+                                                                                  }
+                                                                                ]
+                                                                              }
+                                                                            ]
+                                                                          }
+                                                                        ]
+                                                                      },
+                                                                      {
+                                                                        "type": "group",
+                                                                        "id": "e9b6366b-c8c2-4ea3-9f0b-f6e86d5317f2",
+                                                                        "description": "Else branch",
+                                                                        "children": [
+                                                                          {
+                                                                            "type": "group",
+                                                                            "id": "06f9daf9-0271-40a5-8e93-12ef4f8ce170",
+                                                                            "description": "Group: wt-cash-equal",
+                                                                            "children": [
+                                                                              {
+                                                                                "type": "condition",
+                                                                                "id": "d7f4903a-6965-409a-aaeb-a968eed60b9a",
+                                                                                "description": "Conditional logic 9",
+                                                                                "children": [
+                                                                                  {
+                                                                                    "type": "condition",
+                                                                                    "id": "e3b02ff6-6b0d-4092-b78a-5a5d9a2d7699",
+                                                                                    "description": "Condition: cumulative-return gt 2.8",
+                                                                                    "lhs": {
+                                                                                      "name": "cumulative-return",
+                                                                                      "args": {
+                                                                                        "period": 1
+                                                                                      },
+                                                                                      "symbol": "SQQQ"
+                                                                                    },
+                                                                                    "operator": "gt",
+                                                                                    "rhs": 2.8,
+                                                                                    "children": [
+                                                                                      {
+                                                                                        "type": "group",
+                                                                                        "id": "996ef071-0787-42a5-aea1-fbcfa4d6319b",
+                                                                                        "description": "Group: wt-cash-equal",
+                                                                                        "children": [
+                                                                                          {
+                                                                                            "type": "filter",
+                                                                                            "id": "c8f4eacc-e38b-48f9-bc55-d54fed430434",
+                                                                                            "description": "Select bottom 1 by relative-strength-index",
+                                                                                            "universe": [
+                                                                                              "TQQQ",
+                                                                                              "UDN"
+                                                                                            ],
+                                                                                            "select": "bottom",
+                                                                                            "selection": {
+                                                                                              "n": 1
+                                                                                            },
+                                                                                            "metric": {
+                                                                                              "name": "rsi",
+                                                                                              "args": {
+                                                                                                "period": 11
+                                                                                              }
+                                                                                            },
+                                                                                            "allocation": "weighted",
+                                                                                            "size": 100.0,
+                                                                                            "weights": {
+                                                                                              "TQQQ": 1.0,
+                                                                                              "UDN": 1.0
+                                                                                            }
+                                                                                          },
+                                                                                          {
+                                                                                            "type": "filter",
+                                                                                            "id": "1ef4761c-dd60-429e-bd92-0c2b354f424d",
+                                                                                            "description": "Select top 1 by relative-strength-index",
+                                                                                            "universe": [
+                                                                                              "TQQQ",
+                                                                                              "TMV"
+                                                                                            ],
+                                                                                            "select": "top",
+                                                                                            "selection": {
+                                                                                              "n": 1
+                                                                                            },
+                                                                                            "metric": {
+                                                                                              "name": "rsi",
+                                                                                              "args": {
+                                                                                                "period": 11
+                                                                                              }
+                                                                                            },
+                                                                                            "allocation": "weighted",
+                                                                                            "size": 100.0,
+                                                                                            "weights": {
+                                                                                              "TQQQ": 1.0,
+                                                                                              "TMV": 1.0
+                                                                                            }
+                                                                                          }
+                                                                                        ]
+                                                                                      }
+                                                                                    ]
+                                                                                  },
+                                                                                  {
+                                                                                    "type": "group",
+                                                                                    "id": "a0710436-82e9-4f69-9853-f3fa32fa50fb",
+                                                                                    "description": "Else branch",
+                                                                                    "children": [
+                                                                                      {
+                                                                                        "type": "group",
+                                                                                        "id": "659859fe-fede-429c-a10d-6a684e39a919",
+                                                                                        "description": "Hold Stocks / Bonds (RSI modulated SOXL-SHV, TQQQ-STIP)",
+                                                                                        "children": [
+                                                                                          {
+                                                                                            "type": "weight",
+                                                                                            "id": "2f9cd0f1-f156-48a0-b56e-c82d207da80e",
+                                                                                            "description": "Weighted allocation (total: 100.0%)",
+                                                                                            "allocation_method": "explicit_weights",
+                                                                                            "children": [
+                                                                                              {
+                                                                                                "type": "filter",
+                                                                                                "id": "768952f1-fe62-48a1-87c8-02b46d8122a6",
+                                                                                                "description": "Select bottom 1 by relative-strength-index",
+                                                                                                "universe": [
+                                                                                                  "SOXL",
+                                                                                                  "SHV"
+                                                                                                ],
+                                                                                                "select": "bottom",
+                                                                                                "selection": {
+                                                                                                  "n": 1
+                                                                                                },
+                                                                                                "metric": {
+                                                                                                  "name": "rsi",
+                                                                                                  "args": {
+                                                                                                    "period": 11
+                                                                                                  }
+                                                                                                },
+                                                                                                "allocation": "weighted",
+                                                                                                "size": 68.0,
+                                                                                                "weights": {
+                                                                                                  "SOXL": 0.68,
+                                                                                                  "SHV": 0.68
+                                                                                                }
+                                                                                              },
+                                                                                              {
+                                                                                                "type": "filter",
+                                                                                                "id": "bc77c2a7-f9de-46da-b134-2f27fdd66ef6",
+                                                                                                "description": "Select bottom 1 by relative-strength-index",
+                                                                                                "universe": [
+                                                                                                  "TQQQ",
+                                                                                                  "STIP"
+                                                                                                ],
+                                                                                                "select": "bottom",
+                                                                                                "selection": {
+                                                                                                  "n": 1
+                                                                                                },
+                                                                                                "metric": {
+                                                                                                  "name": "rsi",
+                                                                                                  "args": {
+                                                                                                    "period": 11
+                                                                                                  }
+                                                                                                },
+                                                                                                "allocation": "weighted",
+                                                                                                "size": 32.0,
+                                                                                                "weights": {
+                                                                                                  "TQQQ": 0.32,
+                                                                                                  "STIP": 0.32
+                                                                                                }
+                                                                                              }
+                                                                                            ]
+                                                                                          }
+                                                                                        ]
+                                                                                      }
+                                                                                    ]
+                                                                                  }
+                                                                                ]
+                                                                              }
+                                                                            ]
+                                                                          }
+                                                                        ]
+                                                                      }
+                                                                    ]
+                                                                  }
+                                                                ]
+                                                              }
+                                                            ]
+                                                          }
+                                                        ]
+                                                      },
+                                                      {
+                                                        "type": "group",
+                                                        "id": "e06bcf92-51fd-4a13-a06f-9b7aeddfd862",
+                                                        "description": "Else branch",
+                                                        "children": [
+                                                          {
+                                                            "type": "group",
+                                                            "id": "47d4ae5f-eb17-4503-8089-a4da6f2d84a1",
+                                                            "description": "Group: wt-cash-equal",
+                                                            "children": [
+                                                              {
+                                                                "type": "condition",
+                                                                "id": "fca14781-fdf5-47ae-8bbb-26f8dd0859a1",
+                                                                "description": "Conditional logic 10",
+                                                                "children": [
+                                                                  {
+                                                                    "type": "condition",
+                                                                    "id": "4c84beaa-fdcc-4e8e-84e5-006745e56301",
+                                                                    "description": "Condition: current-price gt QLD",
+                                                                    "lhs": {
+                                                                      "name": "current-price",
+                                                                      "args": {
+                                                                        "period": 10
+                                                                      },
+                                                                      "symbol": "QLD"
+                                                                    },
+                                                                    "operator": "gt",
+                                                                    "rhs": {
+                                                                      "name": "moving-average-price",
+                                                                      "args": {
+                                                                        "period": 20
+                                                                      },
+                                                                      "symbol": "QLD"
+                                                                    },
+                                                                    "children": [
+                                                                      {
+                                                                        "type": "group",
+                                                                        "id": "16cd0d8b-0450-485e-9658-1b6b1c0767fc",
+                                                                        "description": "Group: wt-cash-equal",
+                                                                        "children": [
+                                                                          {
+                                                                            "type": "filter",
+                                                                            "id": "957c0916-e698-4680-86ec-ff5ea3a31060",
+                                                                            "description": "Select bottom 1 by relative-strength-index",
+                                                                            "universe": [
+                                                                              "TQQQ",
+                                                                              "STIP"
+                                                                            ],
+                                                                            "select": "bottom",
+                                                                            "selection": {
+                                                                              "n": 1
+                                                                            },
+                                                                            "metric": {
+                                                                              "name": "rsi",
+                                                                              "args": {
+                                                                                "period": 11
+                                                                              }
+                                                                            }
+                                                                          }
+                                                                        ]
+                                                                      }
+                                                                    ]
+                                                                  },
+                                                                  {
+                                                                    "type": "group",
+                                                                    "id": "84e4e720-a161-4913-8ea0-10308265c840",
+                                                                    "description": "Else branch",
+                                                                    "children": [
+                                                                      {
+                                                                        "type": "group",
+                                                                        "id": "cb111f12-2f9e-4f33-b869-037bc0d078e7",
+                                                                        "description": "Group: wt-cash-equal",
+                                                                        "children": [
+                                                                          {
+                                                                            "type": "condition",
+                                                                            "id": "b370ecae-a64d-469e-9225-af22d9f14e77",
+                                                                            "description": "Conditional logic 11",
+                                                                            "children": [
+                                                                              {
+                                                                                "type": "condition",
+                                                                                "id": "c9e182da-cf9a-4928-b401-164c10478cbd",
+                                                                                "description": "Condition: moving-average-return gt UDN",
+                                                                                "lhs": {
+                                                                                  "name": "returns",
+                                                                                  "args": {
+                                                                                    "period": 20
+                                                                                  },
+                                                                                  "symbol": "TLT"
+                                                                                },
+                                                                                "operator": "gt",
+                                                                                "rhs": {
+                                                                                  "name": "returns",
+                                                                                  "args": {
+                                                                                    "period": 20
+                                                                                  },
+                                                                                  "symbol": "UDN"
+                                                                                },
+                                                                                "children": [
+                                                                                  {
+                                                                                    "type": "group",
+                                                                                    "id": "b6085ea4-ebfd-4d51-9305-4fe1712e8812",
+                                                                                    "description": "Group: wt-cash-equal",
+                                                                                    "children": [
+                                                                                      {
+                                                                                        "type": "filter",
+                                                                                        "id": "ec778e27-e5c9-4c8e-a579-be05b58a6f1b",
+                                                                                        "description": "Select top 1 by relative-strength-index",
+                                                                                        "universe": [
+                                                                                          "TLT",
+                                                                                          "SQQQ"
+                                                                                        ],
+                                                                                        "select": "top",
+                                                                                        "selection": {
+                                                                                          "n": 1
+                                                                                        },
+                                                                                        "metric": {
+                                                                                          "name": "rsi",
+                                                                                          "args": {
+                                                                                            "period": 11
+                                                                                          }
+                                                                                        }
+                                                                                      }
+                                                                                    ]
+                                                                                  }
+                                                                                ]
+                                                                              },
+                                                                              {
+                                                                                "type": "group",
+                                                                                "id": "ba1c5efe-8b91-4ab9-a2da-5be56fdb4fea",
+                                                                                "description": "Else branch",
+                                                                                "children": [
+                                                                                  {
+                                                                                    "type": "group",
+                                                                                    "id": "372ad2af-c8b9-4744-820a-54ecc0b47216",
+                                                                                    "description": "Group: wt-cash-equal",
+                                                                                    "children": [
+                                                                                      {
+                                                                                        "type": "filter",
+                                                                                        "id": "1a82d01b-96d8-4c6c-af8c-1e3026d49c8f",
+                                                                                        "description": "Select bottom 1 by relative-strength-index",
+                                                                                        "universe": [
+                                                                                          "UUP",
+                                                                                          "SQQQ"
+                                                                                        ],
+                                                                                        "select": "bottom",
+                                                                                        "selection": {
+                                                                                          "n": 1
+                                                                                        },
+                                                                                        "metric": {
+                                                                                          "name": "rsi",
+                                                                                          "args": {
+                                                                                            "period": 10
+                                                                                          }
+                                                                                        }
+                                                                                      }
+                                                                                    ]
+                                                                                  }
+                                                                                ]
+                                                                              }
+                                                                            ]
+                                                                          },
+                                                                          {
+                                                                            "type": "filter",
+                                                                            "id": "70e2d8b2-f14c-411f-b078-08d59e9c0f64",
+                                                                            "description": "Select bottom 1 by relative-strength-index",
+                                                                            "universe": [
+                                                                              "UGL",
+                                                                              "SQQQ"
+                                                                            ],
+                                                                            "select": "bottom",
+                                                                            "selection": {
+                                                                              "n": 1
+                                                                            },
+                                                                            "metric": {
+                                                                              "name": "rsi",
+                                                                              "args": {
+                                                                                "period": 12
+                                                                              }
+                                                                            }
+                                                                          }
+                                                                        ]
+                                                                      }
+                                                                    ]
+                                                                  }
+                                                                ]
+                                                              }
+                                                            ]
+                                                          }
+                                                        ]
+                                                      }
+                                                    ]
+                                                  }
+                                                ]
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

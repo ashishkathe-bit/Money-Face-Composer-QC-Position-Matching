@@ -1,0 +1,216 @@
+{
+  "meta": {
+    "name": "Nested JRT | COST+MO / LLY+NVO / PGR+COKE",
+    "description": "",
+    "version": "1.0",
+    "source": "composer",
+    "source_id": "PxxyRCCfleYAiQGkfXKm",
+    "source_url": "https://app.composer.trade/symphony/PxxyRCCfleYAiQGkfXKm/details",
+    "category": "tactical",
+    "complexity_score": 3,
+    "created_at": "2025-06-27T02:37:45.088289Z",
+    "updated_at": "2025-06-27T02:37:45.088302Z"
+  },
+  "settings": {
+    "capital": 100000.0,
+    "currency": "USD",
+    "rebalance": "daily",
+    "fees": {
+      "percentage": 0.001
+    },
+    "slippage": {
+      "model": "percentage",
+      "value": 0.001
+    }
+  },
+  "universe": [
+    {
+      "symbol": "COST",
+      "name": "",
+      "assetClass": "EQUITY"
+    },
+    {
+      "symbol": "MO",
+      "name": "",
+      "assetClass": "EQUITY"
+    },
+    {
+      "symbol": "LLY",
+      "name": "",
+      "assetClass": "EQUITY"
+    },
+    {
+      "symbol": "NVO",
+      "name": "",
+      "assetClass": "EQUITY"
+    },
+    {
+      "symbol": "PGR",
+      "name": "",
+      "assetClass": "EQUITY"
+    },
+    {
+      "symbol": "COKE",
+      "name": "",
+      "assetClass": "EQUITY"
+    }
+  ],
+  "logic": {
+    "type": "group",
+    "id": "4865e628-b642-4eb0-9a00-fafcb1fc9f24",
+    "description": "Group: wt-cash-equal",
+    "children": [
+      {
+        "type": "group",
+        "id": "c3c52efa-a2cc-4785-bbd6-4e5f60a12f5c",
+        "description": "Nested JRT",
+        "children": [
+          {
+            "type": "weight",
+            "id": "8c7da0b9-e53e-440e-880b-20600b1c2b9b",
+            "description": "Inverse volatility allocation (0 assets)",
+            "allocation_method": "inverse_volatility",
+            "universe": [],
+            "children": [
+              {
+                "type": "group",
+                "id": "c5448714-73f3-4259-9000-695844cc03f8",
+                "description": "COST || MO - XLP",
+                "children": [
+                  {
+                    "type": "weight",
+                    "id": "af5d9173-73f4-4239-9314-96e386162638",
+                    "description": "Inverse volatility allocation (2 assets)",
+                    "allocation_method": "inverse_volatility",
+                    "universe": [
+                      "COST",
+                      "MO"
+                    ],
+                    "children": [
+                      {
+                        "type": "order",
+                        "id": "a82fa4d4-b4ef-42ae-849c-d980d75d76fb",
+                        "description": "Allocate to COST",
+                        "side": "long",
+                        "size_type": "percent_equity",
+                        "size": 100.0,
+                        "allocation": "weighted",
+                        "weights": {
+                          "COST": 1.0
+                        },
+                        "symbol_filter": "COST"
+                      },
+                      {
+                        "type": "order",
+                        "id": "6bbe18bf-6954-4b42-8bf4-9eab500d050f",
+                        "description": "Allocate to MO",
+                        "side": "long",
+                        "size_type": "percent_equity",
+                        "size": 100.0,
+                        "allocation": "weighted",
+                        "weights": {
+                          "MO": 1.0
+                        },
+                        "symbol_filter": "MO"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "group",
+                "id": "e93507f4-db57-4a60-9f0d-018cb79095cf",
+                "description": "LLY || NVO - Pharma",
+                "children": [
+                  {
+                    "type": "weight",
+                    "id": "b270d6f9-d5d7-4125-83ce-4ef85079300f",
+                    "description": "Inverse volatility allocation (2 assets)",
+                    "allocation_method": "inverse_volatility",
+                    "universe": [
+                      "LLY",
+                      "NVO"
+                    ],
+                    "children": [
+                      {
+                        "type": "order",
+                        "id": "d26130af-ca1e-487b-b337-a89be85274a9",
+                        "description": "Allocate to LLY",
+                        "side": "long",
+                        "size_type": "percent_equity",
+                        "size": 100.0,
+                        "allocation": "weighted",
+                        "weights": {
+                          "LLY": 1.0
+                        },
+                        "symbol_filter": "LLY"
+                      },
+                      {
+                        "type": "order",
+                        "id": "8176ad82-38ed-4e70-9ac3-10496ab7118a",
+                        "description": "Allocate to NVO",
+                        "side": "long",
+                        "size_type": "percent_equity",
+                        "size": 100.0,
+                        "allocation": "weighted",
+                        "weights": {
+                          "NVO": 1.0
+                        },
+                        "symbol_filter": "NVO"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "group",
+                "id": "25728728-3a81-4d63-8609-56454c52cab8",
+                "description": "PGR || COKE - Misc",
+                "children": [
+                  {
+                    "type": "weight",
+                    "id": "6556278f-c592-46a4-8aa1-2643bdb4e3b3",
+                    "description": "Inverse volatility allocation (2 assets)",
+                    "allocation_method": "inverse_volatility",
+                    "universe": [
+                      "PGR",
+                      "COKE"
+                    ],
+                    "children": [
+                      {
+                        "type": "order",
+                        "id": "f14c862b-69fa-41c2-a06d-8ce739d98e38",
+                        "description": "Allocate to PGR",
+                        "side": "long",
+                        "size_type": "percent_equity",
+                        "size": 100.0,
+                        "allocation": "weighted",
+                        "weights": {
+                          "PGR": 1.0
+                        },
+                        "symbol_filter": "PGR"
+                      },
+                      {
+                        "type": "order",
+                        "id": "beea5a8c-d509-4979-a6f1-934a6641048c",
+                        "description": "Allocate to COKE",
+                        "side": "long",
+                        "size_type": "percent_equity",
+                        "size": 100.0,
+                        "allocation": "weighted",
+                        "weights": {
+                          "COKE": 1.0
+                        },
+                        "symbol_filter": "COKE"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

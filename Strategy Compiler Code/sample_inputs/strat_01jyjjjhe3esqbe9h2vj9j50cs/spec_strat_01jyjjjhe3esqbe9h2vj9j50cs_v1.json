@@ -1,0 +1,731 @@
+{
+  "meta": {
+    "name": "BB-XM NASDAQ-X ||| Deez ||| 29JUN2023",
+    "description": "Believe",
+    "version": "1.0",
+    "source": "composer",
+    "source_id": "1hoPN3tFE0aDY3aiZtxT",
+    "source_url": "https://app.composer.trade/symphony/1hoPN3tFE0aDY3aiZtxT/details",
+    "category": "tactical",
+    "complexity_score": 9,
+    "created_at": "2025-06-25T03:37:14.947339Z",
+    "updated_at": "2025-06-25T03:37:14.947363Z"
+  },
+  "settings": {
+    "capital": 100000.0,
+    "currency": "USD",
+    "rebalance": "none",
+    "fees": {
+      "percentage": 0.001
+    },
+    "slippage": {
+      "model": "percentage",
+      "value": 0.001
+    }
+  },
+  "universe": [
+    {
+      "symbol": "BIL",
+      "name": "",
+      "assetClass": "EQUITY"
+    },
+    {
+      "symbol": "SOXX",
+      "name": "",
+      "assetClass": "EQUITY"
+    },
+    {
+      "symbol": "SPY",
+      "name": "",
+      "assetClass": "EQUITY"
+    },
+    {
+      "symbol": "UVXY",
+      "name": "ProShares Ultra VIX Short-Term Futures ETF",
+      "assetClass": "EQUITY",
+      "exchange": "BATS"
+    },
+    {
+      "symbol": "VIXY",
+      "name": "ProShares VIX Short-Term Futures ETF",
+      "assetClass": "EQUITY",
+      "exchange": "BATS"
+    },
+    {
+      "symbol": "SOXL",
+      "name": "Direxion Daily Semiconductor Bull 3x Shares",
+      "assetClass": "EQUITY",
+      "exchange": "ARCX"
+    },
+    {
+      "symbol": "SOXS",
+      "name": "Direxion Daily Semiconductor Bear 3x Shares",
+      "assetClass": "EQUITY",
+      "exchange": "ARCX"
+    },
+    {
+      "symbol": "VIXM",
+      "name": "ProShares VIX Mid-Term Futures ETF",
+      "assetClass": "EQUITY",
+      "exchange": "BATS"
+    },
+    {
+      "symbol": "TECL",
+      "name": "Direxion Daily Technology Bull 3x Shares",
+      "assetClass": "EQUITY",
+      "exchange": "ARCX"
+    },
+    {
+      "symbol": "TNA",
+      "name": "Direxion Daily Small Cap Bull 3x Shares",
+      "assetClass": "EQUITY",
+      "exchange": "ARCX"
+    },
+    {
+      "symbol": "SPXL",
+      "name": "Direxion Daily S&P 500 Bull 3x Shares",
+      "assetClass": "EQUITY",
+      "exchange": "ARCX"
+    },
+    {
+      "symbol": "MSFT",
+      "name": "Microsoft Corporation",
+      "assetClass": "EQUITY",
+      "exchange": "XNAS"
+    },
+    {
+      "symbol": "AAPL",
+      "name": "Apple Inc.",
+      "assetClass": "EQUITY",
+      "exchange": "XNAS"
+    },
+    {
+      "symbol": "GD",
+      "name": "General Dynamics Corporation",
+      "assetClass": "EQUITY",
+      "exchange": "XNYS"
+    },
+    {
+      "symbol": "RTX",
+      "name": "Raytheon Technologies Corporation",
+      "assetClass": "EQUITY",
+      "exchange": "XNYS"
+    },
+    {
+      "symbol": "NOC",
+      "name": "Northrop Grumman Corp.",
+      "assetClass": "EQUITY",
+      "exchange": "XNYS"
+    },
+    {
+      "symbol": "AMZN",
+      "name": "Amazon.com, Inc.",
+      "assetClass": "EQUITY",
+      "exchange": "XNAS"
+    },
+    {
+      "symbol": "GOOGL",
+      "name": "Alphabet Inc. Class A",
+      "assetClass": "EQUITY",
+      "exchange": "XNAS"
+    },
+    {
+      "symbol": "META",
+      "name": "Meta Platforms Inc. Class A",
+      "assetClass": "EQUITY",
+      "exchange": "XNAS"
+    },
+    {
+      "symbol": "PEP",
+      "name": "PepsiCo, Inc.",
+      "assetClass": "EQUITY",
+      "exchange": "XNAS"
+    },
+    {
+      "symbol": "MSTR",
+      "name": "MicroStrategy Incorporated Class A",
+      "assetClass": "EQUITY",
+      "exchange": "XNAS"
+    },
+    {
+      "symbol": "NVDA",
+      "name": "NVIDIA Corporation",
+      "assetClass": "EQUITY",
+      "exchange": "XNAS"
+    },
+    {
+      "symbol": "TSLA",
+      "name": "Tesla Inc",
+      "assetClass": "EQUITY",
+      "exchange": "XNAS"
+    },
+    {
+      "symbol": "AMD",
+      "name": "Advanced Micro Devices, Inc.",
+      "assetClass": "EQUITY",
+      "exchange": "XNAS"
+    },
+    {
+      "symbol": "INTC",
+      "name": "Intel Corporation",
+      "assetClass": "EQUITY",
+      "exchange": "XNAS"
+    },
+    {
+      "symbol": "NFLX",
+      "name": "Netflix, Inc.",
+      "assetClass": "EQUITY",
+      "exchange": "XNAS"
+    },
+    {
+      "symbol": "AMGN",
+      "name": "Amgen Inc.",
+      "assetClass": "EQUITY",
+      "exchange": "XNAS"
+    },
+    {
+      "symbol": "CSCO",
+      "name": "Cisco Systems, Inc.",
+      "assetClass": "EQUITY",
+      "exchange": "XNAS"
+    },
+    {
+      "symbol": "TMUS",
+      "name": "T-Mobile US, Inc.",
+      "assetClass": "EQUITY",
+      "exchange": "XNAS"
+    },
+    {
+      "symbol": "AVGO",
+      "name": "Broadcom Inc.",
+      "assetClass": "EQUITY",
+      "exchange": "XNAS"
+    },
+    {
+      "symbol": "SBUX",
+      "name": "Starbucks Corporation",
+      "assetClass": "EQUITY",
+      "exchange": "XNAS"
+    }
+  ],
+  "logic": {
+    "type": "group",
+    "id": "e98bd012-85b5-479a-a576-3dfe5f82065c",
+    "description": "Group: wt-cash-equal",
+    "children": [
+      {
+        "type": "group",
+        "id": "44b1c5cf-4aa3-4868-ab73-5dda07a0799f",
+        "description": "?? V 0.1a | Minimal BB | Simple Beta Baller Signal (Invest Copy)",
+        "children": [
+          {
+            "type": "group",
+            "id": "d79263ad-4e66-47cc-92ae-bd1ea0d63fac",
+            "description": "Group: wt-cash-equal",
+            "children": [
+              {
+                "type": "condition",
+                "id": "571e983e-f162-40a9-a326-48b45c644015",
+                "description": "Conditional logic 1",
+                "children": [
+                  {
+                    "type": "condition",
+                    "id": "c3f1bbfb-941d-430f-b28c-6eabda4af09c",
+                    "description": "Condition: relative-strength-index lt SOXX",
+                    "lhs": {
+                      "name": "rsi",
+                      "args": {
+                        "period": 10
+                      },
+                      "symbol": "BIL"
+                    },
+                    "operator": "lt",
+                    "rhs": {
+                      "name": "rsi",
+                      "args": {
+                        "period": 10
+                      },
+                      "symbol": "SOXX"
+                    },
+                    "children": [
+                      {
+                        "type": "group",
+                        "id": "19dc9793-4f8d-48f6-8f3f-792574575990",
+                        "description": "Group: wt-cash-equal",
+                        "children": [
+                          {
+                            "type": "condition",
+                            "id": "f40a914c-1737-4424-86bb-1cab1b5afe5c",
+                            "description": "Conditional logic 2",
+                            "children": [
+                              {
+                                "type": "condition",
+                                "id": "66f3314f-16c0-4a76-a410-3f9e8378d72f",
+                                "description": "Condition: relative-strength-index gt 75",
+                                "lhs": {
+                                  "name": "rsi",
+                                  "args": {
+                                    "period": 6
+                                  },
+                                  "symbol": "SPY"
+                                },
+                                "operator": "gt",
+                                "rhs": 75.0,
+                                "children": [
+                                  {
+                                    "type": "group",
+                                    "id": "76b5a165-9afc-442c-986d-f6a4c24934af",
+                                    "description": "Overbought S&P. Sell the rip. Buy volatility.",
+                                    "children": [
+                                      {
+                                        "type": "group",
+                                        "id": "fb95522f-f447-450d-b222-8adc8242c693",
+                                        "description": "Group: wt-cash-equal",
+                                        "children": [
+                                          {
+                                            "type": "filter",
+                                            "id": "0d7cef92-1804-435f-8e19-bba4f271d9ff",
+                                            "description": "Select bottom 1 by relative-strength-index",
+                                            "universe": [
+                                              "UVXY",
+                                              "VIXY"
+                                            ],
+                                            "select": "bottom",
+                                            "selection": {
+                                              "n": 1
+                                            },
+                                            "metric": {
+                                              "name": "rsi",
+                                              "args": {
+                                                "period": 13
+                                              }
+                                            },
+                                            "allocation": "weighted",
+                                            "size": 80.0,
+                                            "weights": {
+                                              "UVXY": 0.8,
+                                              "VIXY": 0.8
+                                            }
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "type": "group",
+                                "id": "7569791e-0a71-4646-8371-f47a0dfc19f8",
+                                "description": "Else branch",
+                                "children": [
+                                  {
+                                    "type": "group",
+                                    "id": "86a6fbd2-7f1b-4382-b54d-e22af4d8c02f",
+                                    "description": "Group: wt-cash-equal",
+                                    "children": [
+                                      {
+                                        "type": "order",
+                                        "id": "347fbc90-d4de-454e-8b37-4cf3dda48e2f",
+                                        "description": "Direxion Daily Semiconductor Bull 3x Shares",
+                                        "side": "long",
+                                        "size_type": "percent_equity",
+                                        "size": 100.0,
+                                        "allocation": "weighted",
+                                        "weights": {
+                                          "SOXL": 1.0
+                                        },
+                                        "symbol_filter": "SOXL"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "group",
+                    "id": "d085055a-dc1c-4168-9647-a3cf3f715e57",
+                    "description": "Else branch",
+                    "children": [
+                      {
+                        "type": "group",
+                        "id": "968c2480-4340-45ef-bb99-3b0c9b8af9a7",
+                        "description": "? SOXX RSI Machine | Deez | 15NOV2022",
+                        "children": [
+                          {
+                            "type": "group",
+                            "id": "4599158e-e730-4485-82b8-6d9176eb4e55",
+                            "description": "Group: wt-cash-equal",
+                            "children": [
+                              {
+                                "type": "condition",
+                                "id": "1397bcb6-94da-4f22-a7ba-316d5923650d",
+                                "description": "Conditional logic 3",
+                                "children": [
+                                  {
+                                    "type": "condition",
+                                    "id": "8665790d-3405-4932-a1eb-5c73b6bcd344",
+                                    "description": "Condition: relative-strength-index gt 76",
+                                    "lhs": {
+                                      "name": "rsi",
+                                      "args": {
+                                        "period": 10
+                                      },
+                                      "symbol": "SOXX"
+                                    },
+                                    "operator": "gt",
+                                    "rhs": 76.0,
+                                    "children": [
+                                      {
+                                        "type": "group",
+                                        "id": "5aa9ebd1-f143-49a7-a4ad-46caa4712415",
+                                        "description": "Group: wt-cash-equal",
+                                        "children": [
+                                          {
+                                            "type": "order",
+                                            "id": "54a4e51a-c374-4c9e-9547-e195c88136a4",
+                                            "description": "Direxion Daily Semiconductor Bear 3x Shares",
+                                            "side": "long",
+                                            "size_type": "percent_equity",
+                                            "size": 100.0,
+                                            "allocation": "weighted",
+                                            "weights": {
+                                              "SOXS": 1.0
+                                            },
+                                            "symbol_filter": "SOXS"
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "type": "group",
+                                    "id": "e4e97b0d-bc65-4d52-99d3-d330f33ff7fc",
+                                    "description": "Else branch",
+                                    "children": [
+                                      {
+                                        "type": "group",
+                                        "id": "3a2acbee-4084-4fe8-845c-fdf11f349fda",
+                                        "description": "Group: wt-cash-equal",
+                                        "children": [
+                                          {
+                                            "type": "condition",
+                                            "id": "376a76f8-7d8e-4f8f-8e69-9ef4aace0d9e",
+                                            "description": "Conditional logic 4",
+                                            "children": [
+                                              {
+                                                "type": "condition",
+                                                "id": "b321a9aa-8b49-4458-a3a1-2a46bb6dc8d0",
+                                                "description": "Condition: relative-strength-index lt 42",
+                                                "lhs": {
+                                                  "name": "rsi",
+                                                  "args": {
+                                                    "period": 2
+                                                  },
+                                                  "symbol": "SOXX"
+                                                },
+                                                "operator": "lt",
+                                                "rhs": 42.0,
+                                                "children": [
+                                                  {
+                                                    "type": "group",
+                                                    "id": "671558ba-5ffc-420c-96a4-c18bb2b9b5ed",
+                                                    "description": "Group: wt-cash-equal",
+                                                    "children": [
+                                                      {
+                                                        "type": "condition",
+                                                        "id": "eb8be909-9e8f-40e9-998c-e0e370c55816",
+                                                        "description": "Conditional logic 5",
+                                                        "children": [
+                                                          {
+                                                            "type": "condition",
+                                                            "id": "0b865955-0235-4756-9d8b-fd2a96716a7a",
+                                                            "description": "Condition: relative-strength-index lt 57",
+                                                            "lhs": {
+                                                              "name": "rsi",
+                                                              "args": {
+                                                                "period": 10
+                                                              },
+                                                              "symbol": "SOXL"
+                                                            },
+                                                            "operator": "lt",
+                                                            "rhs": 57.0,
+                                                            "children": [
+                                                              {
+                                                                "type": "order",
+                                                                "id": "2f09acef-6967-4954-9509-c8bf172578e9",
+                                                                "description": "Direxion Daily Semiconductor Bull 3x Shares",
+                                                                "side": "long",
+                                                                "size_type": "percent_equity",
+                                                                "size": 100.0,
+                                                                "allocation": "weighted",
+                                                                "weights": {
+                                                                  "SOXL": 1.0
+                                                                },
+                                                                "symbol_filter": "SOXL"
+                                                              }
+                                                            ]
+                                                          },
+                                                          {
+                                                            "type": "group",
+                                                            "id": "318e7819-0a59-46e7-9be6-a46c7f28e01e",
+                                                            "description": "Else branch",
+                                                            "children": [
+                                                              {
+                                                                "type": "order",
+                                                                "id": "d9c7db6c-8595-4225-ad0a-ebc0b9fbe7fb",
+                                                                "description": "Direxion Daily Semiconductor Bear 3x Shares",
+                                                                "side": "long",
+                                                                "size_type": "percent_equity",
+                                                                "size": 100.0,
+                                                                "allocation": "weighted",
+                                                                "weights": {
+                                                                  "SOXS": 1.0
+                                                                },
+                                                                "symbol_filter": "SOXS"
+                                                              }
+                                                            ]
+                                                          }
+                                                        ]
+                                                      }
+                                                    ]
+                                                  }
+                                                ]
+                                              },
+                                              {
+                                                "type": "group",
+                                                "id": "5e08ca77-a894-41fe-bfda-bcdb4c8867ca",
+                                                "description": "Else branch",
+                                                "children": [
+                                                  {
+                                                    "type": "group",
+                                                    "id": "f256aad7-6297-4445-998a-5b973a6e19d8",
+                                                    "description": "V 1.2 | ?? NASDAQ-X DeETF | Deez | AR: 83% DD: 25.6% - 1JAN2019",
+                                                    "children": [
+                                                      {
+                                                        "type": "group",
+                                                        "id": "54c3433c-7b8e-4311-b809-4226eed4e175",
+                                                        "description": "Group: wt-cash-equal",
+                                                        "children": [
+                                                          {
+                                                            "type": "condition",
+                                                            "id": "dfe946ca-0ceb-4c9f-9cda-ebc81c655c5e",
+                                                            "description": "Conditional logic 6",
+                                                            "children": [
+                                                              {
+                                                                "type": "condition",
+                                                                "id": "52311b0e-716d-4d6f-9269-a5588812b93a",
+                                                                "description": "Condition: relative-strength-index gt 77",
+                                                                "lhs": {
+                                                                  "name": "rsi",
+                                                                  "args": {
+                                                                    "period": 14
+                                                                  },
+                                                                  "symbol": "SPY"
+                                                                },
+                                                                "operator": "gt",
+                                                                "rhs": 77.0,
+                                                                "children": [
+                                                                  {
+                                                                    "type": "group",
+                                                                    "id": "26f400cc-7e2b-4ace-a398-5d154b0c8e65",
+                                                                    "description": "Group: wt-cash-equal",
+                                                                    "children": [
+                                                                      {
+                                                                        "type": "order",
+                                                                        "id": "d63d51a8-fe03-4b6e-a2d2-92e84e282367",
+                                                                        "description": "ProShares VIX Mid-Term Futures ETF",
+                                                                        "side": "long",
+                                                                        "size_type": "percent_equity",
+                                                                        "size": 100.0,
+                                                                        "allocation": "weighted",
+                                                                        "weights": {
+                                                                          "VIXM": 1.0
+                                                                        },
+                                                                        "symbol_filter": "VIXM"
+                                                                      }
+                                                                    ]
+                                                                  }
+                                                                ]
+                                                              },
+                                                              {
+                                                                "type": "group",
+                                                                "id": "1e607627-d35c-4cae-a394-3938597e8c38",
+                                                                "description": "Else branch",
+                                                                "children": [
+                                                                  {
+                                                                    "type": "group",
+                                                                    "id": "7bb9a762-7f5f-4113-aecc-7641b7feb233",
+                                                                    "description": "Group: wt-cash-equal",
+                                                                    "children": [
+                                                                      {
+                                                                        "type": "condition",
+                                                                        "id": "e44309f6-4a59-4561-80a9-2419e0eb2cd8",
+                                                                        "description": "Conditional logic 7",
+                                                                        "children": [
+                                                                          {
+                                                                            "type": "condition",
+                                                                            "id": "21e5d841-cf1c-44c5-b5d4-a45b234e3158",
+                                                                            "description": "Condition: relative-strength-index lt 30",
+                                                                            "lhs": {
+                                                                              "name": "rsi",
+                                                                              "args": {
+                                                                                "period": 14
+                                                                              },
+                                                                              "symbol": "SPY"
+                                                                            },
+                                                                            "operator": "lt",
+                                                                            "rhs": 30.0,
+                                                                            "children": [
+                                                                              {
+                                                                                "type": "group",
+                                                                                "id": "561e6acf-2eb6-4b86-990e-d087ef397510",
+                                                                                "description": "Group: wt-cash-equal",
+                                                                                "children": [
+                                                                                  {
+                                                                                    "type": "filter",
+                                                                                    "id": "0dcb0cd2-6639-477f-9fe4-72221745208d",
+                                                                                    "description": "Select top 2 by cumulative-return",
+                                                                                    "universe": [
+                                                                                      "TECL",
+                                                                                      "TNA",
+                                                                                      "SPXL"
+                                                                                    ],
+                                                                                    "select": "top",
+                                                                                    "selection": {
+                                                                                      "n": 2
+                                                                                    },
+                                                                                    "metric": {
+                                                                                      "name": "cumulative-return",
+                                                                                      "args": {
+                                                                                        "period": 45
+                                                                                      }
+                                                                                    },
+                                                                                    "allocation": "weighted",
+                                                                                    "size": 10.0,
+                                                                                    "weights": {
+                                                                                      "TECL": 0.1,
+                                                                                      "TNA": 0.1,
+                                                                                      "SPXL": 0.1
+                                                                                    }
+                                                                                  }
+                                                                                ]
+                                                                              }
+                                                                            ]
+                                                                          },
+                                                                          {
+                                                                            "type": "group",
+                                                                            "id": "13d76bdf-e947-4969-81dc-5bebfee97296",
+                                                                            "description": "Else branch",
+                                                                            "children": [
+                                                                              {
+                                                                                "type": "group",
+                                                                                "id": "541f5c26-59c3-40ce-adb8-dd0fa2ff1a09",
+                                                                                "description": "Group: wt-cash-equal",
+                                                                                "children": [
+                                                                                  {
+                                                                                    "type": "filter",
+                                                                                    "id": "dec8319f-f8ca-45da-bb00-18784d68750a",
+                                                                                    "description": "Select top 3 by relative-strength-index",
+                                                                                    "universe": [
+                                                                                      "MSFT",
+                                                                                      "AAPL",
+                                                                                      "GD",
+                                                                                      "RTX",
+                                                                                      "NOC",
+                                                                                      "AMZN",
+                                                                                      "GOOGL",
+                                                                                      "META",
+                                                                                      "PEP",
+                                                                                      "MSTR",
+                                                                                      "NVDA",
+                                                                                      "TSLA",
+                                                                                      "AMD",
+                                                                                      "INTC",
+                                                                                      "NFLX",
+                                                                                      "AMGN",
+                                                                                      "CSCO",
+                                                                                      "TMUS",
+                                                                                      "AVGO",
+                                                                                      "SBUX"
+                                                                                    ],
+                                                                                    "select": "top",
+                                                                                    "selection": {
+                                                                                      "n": 3
+                                                                                    },
+                                                                                    "metric": {
+                                                                                      "name": "rsi",
+                                                                                      "args": {
+                                                                                        "period": 46
+                                                                                      }
+                                                                                    },
+                                                                                    "allocation": "weighted",
+                                                                                    "size": 90.0,
+                                                                                    "weights": {
+                                                                                      "MSFT": 0.9,
+                                                                                      "AAPL": 0.9,
+                                                                                      "GD": 0.9,
+                                                                                      "RTX": 0.9,
+                                                                                      "NOC": 0.9,
+                                                                                      "AMZN": 0.9,
+                                                                                      "GOOGL": 0.9,
+                                                                                      "META": 0.9,
+                                                                                      "PEP": 0.9,
+                                                                                      "MSTR": 0.9,
+                                                                                      "NVDA": 0.9,
+                                                                                      "TSLA": 0.9,
+                                                                                      "AMD": 0.9,
+                                                                                      "INTC": 0.9,
+                                                                                      "NFLX": 0.9,
+                                                                                      "AMGN": 0.9,
+                                                                                      "CSCO": 0.9,
+                                                                                      "TMUS": 0.9,
+                                                                                      "AVGO": 0.9,
+                                                                                      "SBUX": 0.9
+                                                                                    }
+                                                                                  }
+                                                                                ]
+                                                                              }
+                                                                            ]
+                                                                          }
+                                                                        ]
+                                                                      }
+                                                                    ]
+                                                                  }
+                                                                ]
+                                                              }
+                                                            ]
+                                                          }
+                                                        ]
+                                                      }
+                                                    ]
+                                                  }
+                                                ]
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

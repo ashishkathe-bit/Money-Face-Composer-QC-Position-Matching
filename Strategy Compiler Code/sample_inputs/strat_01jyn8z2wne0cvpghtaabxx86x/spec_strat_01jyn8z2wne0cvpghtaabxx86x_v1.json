@@ -1,0 +1,484 @@
+{
+  "meta": {
+    "name": "SPY (S&P-500) Strength Catcher  V2 Medium Risk, Medium Return",
+    "description": "Overall Structure:\n\nThe symphony uses a threshold-based rebalance strategy with a 5% drift allowance.\nPrimary Decision Point:\n\nIt compares the 400-day moving average return of SPY with the 385-day moving average return of DBC.\nIf SPY's return is greater, it follows one investment path; otherwise, it follows another.\nSPY Dominant Path:\n\nExponential Moving Average Check:\nIf the 100-day EMA of SPY is greater than its 400-day EMA, it further evaluates the RSI of SPY.\nRSI Check:\nIf SPY's 10-day RSI is greater than 71, it invests in the \"UVXY\" ETF, which is a volatility ETF.\nOtherwise, it evaluates the cumulative return of SPY over 5 days.\nCumulative Return Check:\nIf the 5-day cumulative return of SPY is less than -2.5%, it checks the 1-day cumulative return.\nIf the 1-day return is greater than 4%, it invests in \"UVXY\"; otherwise, it invests in \"UPRO\", a leveraged S&amp;P 500 ETF.\nIf the 5-day return condition is not met, it selects the asset with the lowest 8-day moving average return between \"UPRO\" and \"TQQQ\" (a leveraged NASDAQ ETF).\nDBC Dominant Path:\n\nExponential Moving Average Check:\nIf the 100-day EMA of DBC is greater than its 400-day EMA, it invests in \"DBC\".\nOtherwise, it selects the asset with the highest 60-day cumulative return among a list of ETFs including \"EFA\", \"EEM\", \"TLT\", \"EWZ\", and \"SHY\".\nInvestment Choices:\n\nThe symphony uses a mix of equity ETFs, volatility ETFs, and bond ETFs to capture different market conditions.\nIt dynamically shifts between these assets based on technical indicators and relative performance metrics.\nIn summary, this symphony aims to capitalize on the relative strength of the S&amp;P 500 versus commodities, using technical indicators to guide asset allocation decisions. It incorporates volatility and leveraged ETFs to potentially enhance returns during specific market conditions.",
+    "version": "1.0",
+    "source": "composer",
+    "source_id": "GLw7YVVjLPe4d1KPX6Vc",
+    "source_url": "https://app.composer.trade/symphony/GLw7YVVjLPe4d1KPX6Vc/details",
+    "category": "tactical",
+    "complexity_score": 9,
+    "created_at": "2025-06-26T04:47:03.573574Z",
+    "updated_at": "2025-06-26T04:47:03.573589Z"
+  },
+  "settings": {
+    "capital": 100000.0,
+    "currency": "USD",
+    "rebalance": "none",
+    "fees": {
+      "percentage": 0.001
+    },
+    "slippage": {
+      "model": "percentage",
+      "value": 0.001
+    }
+  },
+  "universe": [
+    {
+      "symbol": "SPY",
+      "name": "",
+      "assetClass": "EQUITY"
+    },
+    {
+      "symbol": "DBC",
+      "name": "Invesco DB Commodity Index Tracking Fund",
+      "assetClass": "EQUITY",
+      "exchange": "ARCX"
+    },
+    {
+      "symbol": "UVXY",
+      "name": "ProShares Ultra VIX Short-Term Futures ETF",
+      "assetClass": "EQUITY",
+      "exchange": "BATS"
+    },
+    {
+      "symbol": "UPRO",
+      "name": "ProShares UltraPro S&P500",
+      "assetClass": "EQUITY",
+      "exchange": "ARCX"
+    },
+    {
+      "symbol": "TQQQ",
+      "name": "ProShares UltraPro QQQ",
+      "assetClass": "EQUITY",
+      "exchange": "XNAS"
+    },
+    {
+      "symbol": "EFA",
+      "name": "iShares MSCI EAFE ETF",
+      "assetClass": "EQUITY"
+    },
+    {
+      "symbol": "EEM",
+      "name": "iShares MSCI Emerging Markets ETF",
+      "assetClass": "EQUITY"
+    },
+    {
+      "symbol": "TLT",
+      "name": "iShares 20+ Year Treasury Bond ETF",
+      "assetClass": "EQUITY",
+      "exchange": "XNAS"
+    },
+    {
+      "symbol": "SHY",
+      "name": "iShares 1-3 Year Treasury Bond ETF",
+      "assetClass": "EQUITY",
+      "exchange": "XNAS"
+    },
+    {
+      "symbol": "EWZ",
+      "name": "iShares MSCI Brazil ETF",
+      "assetClass": "EQUITY",
+      "exchange": "ARCX"
+    }
+  ],
+  "logic": {
+    "type": "group",
+    "id": "bc2d9f03-a1ea-4bd4-90e1-4fc37d4dfc17",
+    "description": "Group: wt-cash-equal",
+    "children": [
+      {
+        "type": "condition",
+        "id": "cd35418d-2cb9-44d9-abcb-4d723f8e107a",
+        "description": "Conditional logic 1",
+        "children": [
+          {
+            "type": "condition",
+            "id": "d7d998cd-63cc-405c-b216-1a5381118378",
+            "description": "Condition: moving-average-return gt DBC",
+            "lhs": {
+              "name": "returns",
+              "args": {
+                "period": 400
+              },
+              "symbol": "SPY"
+            },
+            "operator": "gt",
+            "rhs": {
+              "name": "returns",
+              "args": {
+                "period": 385
+              },
+              "symbol": "DBC"
+            },
+            "children": [
+              {
+                "type": "group",
+                "id": "85db9e70-d1a9-48ec-abc7-94717825f104",
+                "description": "Group: wt-cash-equal",
+                "children": [
+                  {
+                    "type": "condition",
+                    "id": "3d2289bf-5921-49f7-a49a-862c9219a3ec",
+                    "description": "Conditional logic 2",
+                    "children": [
+                      {
+                        "type": "condition",
+                        "id": "11bf6329-8dab-4b74-9c84-aa18d73b9ba7",
+                        "description": "Condition: exponential-moving-average-price gt SPY",
+                        "lhs": {
+                          "name": "exponential-moving-average-price",
+                          "args": {
+                            "period": 100
+                          },
+                          "symbol": "SPY"
+                        },
+                        "operator": "gt",
+                        "rhs": {
+                          "name": "exponential-moving-average-price",
+                          "args": {
+                            "period": 400
+                          },
+                          "symbol": "SPY"
+                        },
+                        "children": [
+                          {
+                            "type": "group",
+                            "id": "a58fd7b1-5f0d-4816-bd96-5e3ff5b28375",
+                            "description": "Group: wt-cash-equal",
+                            "children": [
+                              {
+                                "type": "condition",
+                                "id": "89ded399-3687-4818-8a0e-6b2de88cbd8f",
+                                "description": "Conditional logic 3",
+                                "children": [
+                                  {
+                                    "type": "condition",
+                                    "id": "2d7ce1c3-fa31-417b-8074-39f9b229a6a4",
+                                    "description": "Condition: relative-strength-index gt 71",
+                                    "lhs": {
+                                      "name": "rsi",
+                                      "args": {
+                                        "period": 10
+                                      },
+                                      "symbol": "SPY"
+                                    },
+                                    "operator": "gt",
+                                    "rhs": 71.0,
+                                    "children": [
+                                      {
+                                        "type": "order",
+                                        "id": "d399f002-1bc4-4ba5-aed6-169c696f440d",
+                                        "description": "ProShares Ultra VIX Short-Term Futures ETF",
+                                        "side": "long",
+                                        "size_type": "percent_equity",
+                                        "size": 100.0,
+                                        "allocation": "weighted",
+                                        "weights": {
+                                          "UVXY": 1.0
+                                        },
+                                        "symbol_filter": "UVXY"
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "type": "group",
+                                    "id": "36e5d59c-81a9-4b06-a3bc-d20e4ac46379",
+                                    "description": "Else branch",
+                                    "children": [
+                                      {
+                                        "type": "group",
+                                        "id": "04539317-6f55-42ee-b702-5647cae8bae4",
+                                        "description": "Group: wt-cash-equal",
+                                        "children": [
+                                          {
+                                            "type": "condition",
+                                            "id": "b71bade1-8aa7-4e54-8c1b-ba6d43e990d4",
+                                            "description": "Conditional logic 4",
+                                            "children": [
+                                              {
+                                                "type": "condition",
+                                                "id": "2c0f9fcf-8546-4504-aba4-d76fbe219588",
+                                                "description": "Condition: cumulative-return lt -2.5",
+                                                "lhs": {
+                                                  "name": "cumulative-return",
+                                                  "args": {
+                                                    "period": 5
+                                                  },
+                                                  "symbol": "SPY"
+                                                },
+                                                "operator": "lt",
+                                                "rhs": -2.5,
+                                                "children": [
+                                                  {
+                                                    "type": "group",
+                                                    "id": "905a0834-3c7d-4a2a-a00f-fb73e62b2016",
+                                                    "description": "Group: wt-cash-equal",
+                                                    "children": [
+                                                      {
+                                                        "type": "condition",
+                                                        "id": "ba3c341a-803c-49d0-830d-d94d0c85e882",
+                                                        "description": "Conditional logic 5",
+                                                        "children": [
+                                                          {
+                                                            "type": "condition",
+                                                            "id": "7ad23a2e-755b-4381-9d07-de3a699bdc67",
+                                                            "description": "Condition: cumulative-return gt 4",
+                                                            "lhs": {
+                                                              "name": "cumulative-return",
+                                                              "args": {
+                                                                "period": 1
+                                                              },
+                                                              "symbol": "SPY"
+                                                            },
+                                                            "operator": "gt",
+                                                            "rhs": 4.0,
+                                                            "children": [
+                                                              {
+                                                                "type": "order",
+                                                                "id": "e67a855a-2b29-4c1e-ac99-7a7a0278f12f",
+                                                                "description": "ProShares Ultra VIX Short-Term Futures ETF",
+                                                                "side": "long",
+                                                                "size_type": "percent_equity",
+                                                                "size": 100.0,
+                                                                "allocation": "weighted",
+                                                                "weights": {
+                                                                  "UVXY": 1.0
+                                                                },
+                                                                "symbol_filter": "UVXY"
+                                                              }
+                                                            ]
+                                                          },
+                                                          {
+                                                            "type": "group",
+                                                            "id": "04c21e9c-d444-4b22-8c61-a6061f15c9d5",
+                                                            "description": "Else branch",
+                                                            "children": [
+                                                              {
+                                                                "type": "order",
+                                                                "id": "e672f9f6-ccef-435b-a6c8-51d121ee6010",
+                                                                "description": "ProShares UltraPro S&P500",
+                                                                "side": "long",
+                                                                "size_type": "percent_equity",
+                                                                "size": 100.0,
+                                                                "allocation": "weighted",
+                                                                "weights": {
+                                                                  "UPRO": 1.0
+                                                                },
+                                                                "symbol_filter": "UPRO"
+                                                              }
+                                                            ]
+                                                          }
+                                                        ]
+                                                      }
+                                                    ]
+                                                  }
+                                                ]
+                                              },
+                                              {
+                                                "type": "group",
+                                                "id": "b1d58926-b1f1-445c-a5d5-770bfff20e1c",
+                                                "description": "Else branch",
+                                                "children": [
+                                                  {
+                                                    "type": "group",
+                                                    "id": "97ec0746-2721-4de8-8126-29a2ee41ebe8",
+                                                    "description": "Group: wt-cash-equal",
+                                                    "children": [
+                                                      {
+                                                        "type": "filter",
+                                                        "id": "5f21cfb1-f738-446a-9a62-9fc782cb095a",
+                                                        "description": "Select bottom 1 by moving-average-return",
+                                                        "universe": [
+                                                          "UPRO",
+                                                          "TQQQ"
+                                                        ],
+                                                        "select": "bottom",
+                                                        "selection": {
+                                                          "n": 1
+                                                        },
+                                                        "metric": {
+                                                          "name": "returns",
+                                                          "args": {
+                                                            "period": 8
+                                                          }
+                                                        }
+                                                      }
+                                                    ]
+                                                  }
+                                                ]
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "type": "group",
+                        "id": "191fef24-a16f-4d8c-a88c-e18c466b46e3",
+                        "description": "Else branch",
+                        "children": [
+                          {
+                            "type": "group",
+                            "id": "fc113076-12c0-4d64-9e56-3c5c48663e1c",
+                            "description": "Group: wt-cash-equal",
+                            "children": [
+                              {
+                                "type": "filter",
+                                "id": "87ad3ff7-8d11-499e-8c5f-ffd81d5593e7",
+                                "description": "Select top 1 by cumulative-return",
+                                "universe": [
+                                  "EFA",
+                                  "EEM",
+                                  "TLT",
+                                  "SHY"
+                                ],
+                                "select": "top",
+                                "selection": {
+                                  "n": 1
+                                },
+                                "metric": {
+                                  "name": "cumulative-return",
+                                  "args": {
+                                    "period": 60
+                                  }
+                                },
+                                "allocation": "weighted",
+                                "size": 100.0,
+                                "weights": {
+                                  "EFA": 1.0,
+                                  "EEM": 1.0,
+                                  "TLT": 1.0,
+                                  "SHY": 1.0
+                                }
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "group",
+            "id": "8d0d34f4-24e8-43d4-84a0-ca980242655c",
+            "description": "Else branch",
+            "children": [
+              {
+                "type": "group",
+                "id": "d39dac55-7f41-46df-9f05-b3df0b69f3e8",
+                "description": "Commodity Index (DBC) Bullish",
+                "children": [
+                  {
+                    "type": "group",
+                    "id": "03bdf876-ea3f-4c26-b106-44f24baf33d1",
+                    "description": "Group: wt-cash-equal",
+                    "children": [
+                      {
+                        "type": "condition",
+                        "id": "85ab8716-86a1-421d-acc3-ae4775f4ac72",
+                        "description": "Conditional logic 6",
+                        "children": [
+                          {
+                            "type": "condition",
+                            "id": "bd241acc-a221-4102-93c5-91a9e9da3542",
+                            "description": "Condition: exponential-moving-average-price gt DBC",
+                            "lhs": {
+                              "name": "exponential-moving-average-price",
+                              "args": {
+                                "period": 100
+                              },
+                              "symbol": "DBC"
+                            },
+                            "operator": "gt",
+                            "rhs": {
+                              "name": "exponential-moving-average-price",
+                              "args": {
+                                "period": 400
+                              },
+                              "symbol": "DBC"
+                            },
+                            "children": [
+                              {
+                                "type": "order",
+                                "id": "463bf2c2-e03d-4bf8-a2ff-ffeb87979985",
+                                "description": "Invesco DB Commodity Index Tracking Fund",
+                                "side": "long",
+                                "size_type": "percent_equity",
+                                "size": 100.0,
+                                "allocation": "weighted",
+                                "weights": {
+                                  "DBC": 1.0
+                                },
+                                "symbol_filter": "DBC"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "group",
+                            "id": "c510bf35-910d-4e68-b3d2-3d14a7596b47",
+                            "description": "Else branch",
+                            "children": [
+                              {
+                                "type": "group",
+                                "id": "748f1fe6-3590-4a84-a6ce-193b73aa8c62",
+                                "description": "Group: wt-cash-equal",
+                                "children": [
+                                  {
+                                    "type": "filter",
+                                    "id": "b7d4caaf-f5b9-4f8a-85c0-a2baed08d7c5",
+                                    "description": "Select top 1 by cumulative-return",
+                                    "universe": [
+                                      "EFA",
+                                      "EEM",
+                                      "TLT",
+                                      "EWZ",
+                                      "SHY"
+                                    ],
+                                    "select": "top",
+                                    "selection": {
+                                      "n": 1
+                                    },
+                                    "metric": {
+                                      "name": "cumulative-return",
+                                      "args": {
+                                        "period": 60
+                                      }
+                                    },
+                                    "allocation": "weighted",
+                                    "size": 100.0,
+                                    "weights": {
+                                      "EFA": 1.0,
+                                      "EEM": 1.0,
+                                      "TLT": 1.0,
+                                      "EWZ": 1.0,
+                                      "SHY": 1.0
+                                    }
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

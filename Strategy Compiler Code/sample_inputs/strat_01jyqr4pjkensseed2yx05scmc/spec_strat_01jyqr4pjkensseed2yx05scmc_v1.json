@@ -1,0 +1,685 @@
+{
+  "meta": {
+    "name": "V7| TQQQ For The Long Term (Invest Copy)",
+    "description": "Slightly modded version of Dereck Nielsen's algo with higher returns during most 1/2/3/5 year periods from Jan 2012 - present.",
+    "version": "1.0",
+    "source": "composer",
+    "source_id": "kJKiNRRAvA4UZMEqTBYq",
+    "source_url": "https://app.composer.trade/symphony/kJKiNRRAvA4UZMEqTBYq/details",
+    "category": "tactical",
+    "complexity_score": 8,
+    "created_at": "2025-06-27T03:50:45.075407Z",
+    "updated_at": "2025-06-27T03:50:45.075418Z"
+  },
+  "settings": {
+    "capital": 100000.0,
+    "currency": "USD",
+    "rebalance": "daily",
+    "fees": {
+      "percentage": 0.001
+    },
+    "slippage": {
+      "model": "percentage",
+      "value": 0.001
+    }
+  },
+  "universe": [
+    {
+      "symbol": "SPY",
+      "name": "",
+      "assetClass": "EQUITY"
+    },
+    {
+      "symbol": "TQQQ",
+      "name": "ProShares UltraPro QQQ",
+      "assetClass": "EQUITY",
+      "exchange": "XNAS"
+    },
+    {
+      "symbol": "UVXY",
+      "name": "ProShares Ultra VIX Short-Term Futures ETF",
+      "assetClass": "EQUITY",
+      "exchange": "BATS"
+    },
+    {
+      "symbol": "TECL",
+      "name": "Direxion Daily Technology Bull 3x Shares",
+      "assetClass": "EQUITY",
+      "exchange": "ARCX"
+    },
+    {
+      "symbol": "UPRO",
+      "name": "ProShares UltraPro S&P500",
+      "assetClass": "EQUITY",
+      "exchange": "ARCX"
+    },
+    {
+      "symbol": "BSV",
+      "name": "Vanguard Short-Term Bond ETF",
+      "assetClass": "EQUITY",
+      "exchange": "ARCX"
+    },
+    {
+      "symbol": "PSQ",
+      "name": "",
+      "assetClass": "EQUITY"
+    },
+    {
+      "symbol": "SQQQ",
+      "name": "ProShares UltraPro Short QQQ",
+      "assetClass": "EQUITY",
+      "exchange": "XNAS"
+    }
+  ],
+  "logic": {
+    "type": "group",
+    "id": "7f3b6677-0a89-4096-a3d7-316127fc87d2",
+    "description": "Group: wt-cash-equal",
+    "children": [
+      {
+        "type": "condition",
+        "id": "00c6b5b8-c0dd-4a55-97da-4058a5a799cc",
+        "description": "Conditional logic 1",
+        "children": [
+          {
+            "type": "condition",
+            "id": "26502e86-7735-4255-a092-34dd18195f59",
+            "description": "Condition: current-price gt SPY",
+            "lhs": {
+              "name": "current-price",
+              "args": {},
+              "symbol": "SPY"
+            },
+            "operator": "gt",
+            "rhs": {
+              "name": "moving-average-price",
+              "args": {
+                "period": 200
+              },
+              "symbol": "SPY"
+            },
+            "children": [
+              {
+                "type": "group",
+                "id": "b00704a0-5363-4eb7-b2e2-bee55423653e",
+                "description": "Group: wt-cash-equal",
+                "children": [
+                  {
+                    "type": "condition",
+                    "id": "b06d2ecf-ace9-4e2a-a9fb-1b4ace13f8ac",
+                    "description": "Conditional logic 2",
+                    "children": [
+                      {
+                        "type": "condition",
+                        "id": "ae404f49-d9fc-466d-af98-31114c7eaacf",
+                        "description": "Condition: relative-strength-index gt 79",
+                        "lhs": {
+                          "name": "rsi",
+                          "args": {
+                            "period": 10
+                          },
+                          "symbol": "TQQQ"
+                        },
+                        "operator": "gt",
+                        "rhs": 79.0,
+                        "children": [
+                          {
+                            "type": "order",
+                            "id": "ad7e0e8b-5470-4f05-a68c-b43295ed7e4f",
+                            "description": "ProShares Ultra VIX Short-Term Futures ETF",
+                            "side": "long",
+                            "size_type": "percent_equity",
+                            "size": 100.0,
+                            "allocation": "weighted",
+                            "weights": {
+                              "UVXY": 1.0
+                            },
+                            "symbol_filter": "UVXY"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "group",
+                        "id": "e2ef5b7d-6928-4ae5-9fc8-b865c727a430",
+                        "description": "Else branch",
+                        "children": [
+                          {
+                            "type": "group",
+                            "id": "a2adcf6a-b079-47fb-9234-3d26f0e71eea",
+                            "description": "Group: wt-cash-equal",
+                            "children": [
+                              {
+                                "type": "condition",
+                                "id": "3febdbdd-1e97-43c9-8e2e-bc94e2432c2d",
+                                "description": "Conditional logic 3",
+                                "children": [
+                                  {
+                                    "type": "condition",
+                                    "id": "0e2a53e1-2526-4356-94fc-81dc1b3a06d2",
+                                    "description": "Condition: relative-strength-index gt 80",
+                                    "lhs": {
+                                      "name": "rsi",
+                                      "args": {
+                                        "period": 10
+                                      },
+                                      "symbol": "SPY"
+                                    },
+                                    "operator": "gt",
+                                    "rhs": 80.0,
+                                    "children": [
+                                      {
+                                        "type": "order",
+                                        "id": "a0235eea-5729-46d2-a7c3-ced080f486ba",
+                                        "description": "ProShares Ultra VIX Short-Term Futures ETF",
+                                        "side": "long",
+                                        "size_type": "percent_equity",
+                                        "size": 100.0,
+                                        "allocation": "weighted",
+                                        "weights": {
+                                          "UVXY": 1.0
+                                        },
+                                        "symbol_filter": "UVXY"
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "type": "group",
+                                    "id": "450d1de1-8a74-4038-be17-12b521c92991",
+                                    "description": "Else branch",
+                                    "children": [
+                                      {
+                                        "type": "order",
+                                        "id": "ba8b26ab-7e18-45ae-ad71-6cfa3da5deff",
+                                        "description": "ProShares UltraPro QQQ",
+                                        "side": "long",
+                                        "size_type": "percent_equity",
+                                        "size": 100.0,
+                                        "allocation": "weighted",
+                                        "weights": {
+                                          "TQQQ": 1.0
+                                        },
+                                        "symbol_filter": "TQQQ"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "group",
+            "id": "9dace59d-ac44-491d-b266-22ddd3d7a8b0",
+            "description": "Else branch",
+            "children": [
+              {
+                "type": "group",
+                "id": "4ae9096e-920d-4c4b-81d1-3bd37447a39e",
+                "description": "Group: wt-cash-equal",
+                "children": [
+                  {
+                    "type": "condition",
+                    "id": "142a7c15-59f0-4e8b-a9df-ac8361b654b0",
+                    "description": "Conditional logic 4",
+                    "children": [
+                      {
+                        "type": "condition",
+                        "id": "2495b209-bc8a-42f5-a943-494d659948b9",
+                        "description": "Condition: relative-strength-index lt 31",
+                        "lhs": {
+                          "name": "rsi",
+                          "args": {
+                            "period": 10
+                          },
+                          "symbol": "TQQQ"
+                        },
+                        "operator": "lt",
+                        "rhs": 31.0,
+                        "children": [
+                          {
+                            "type": "group",
+                            "id": "105b8bbc-a6cd-4a97-8efb-899565a2faa0",
+                            "description": "Group: wt-cash-equal",
+                            "children": [
+                              {
+                                "type": "order",
+                                "id": "911e8439-846b-4546-8571-a286c71a7632",
+                                "description": "Direxion Daily Technology Bull 3x Shares",
+                                "side": "long",
+                                "size_type": "percent_equity",
+                                "size": 100.0,
+                                "allocation": "weighted",
+                                "weights": {
+                                  "TECL": 1.0
+                                },
+                                "symbol_filter": "TECL"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "type": "group",
+                        "id": "7d8071b1-756f-4d1d-b2c0-19237cbd3e89",
+                        "description": "Else branch",
+                        "children": [
+                          {
+                            "type": "group",
+                            "id": "f20b8ff4-1098-4237-a508-c514f53d8385",
+                            "description": "Group: wt-cash-equal",
+                            "children": [
+                              {
+                                "type": "condition",
+                                "id": "bc3244ea-dfd2-42af-9280-8de520f522c8",
+                                "description": "Conditional logic 5",
+                                "children": [
+                                  {
+                                    "type": "condition",
+                                    "id": "8e619a35-97d6-4893-9aa4-64851687755b",
+                                    "description": "Condition: relative-strength-index lt 29",
+                                    "lhs": {
+                                      "name": "rsi",
+                                      "args": {
+                                        "period": 10
+                                      },
+                                      "symbol": "UPRO"
+                                    },
+                                    "operator": "lt",
+                                    "rhs": 29.0,
+                                    "children": [
+                                      {
+                                        "type": "group",
+                                        "id": "8c1dcf55-00c1-4cee-a29c-54053a1d94d3",
+                                        "description": "Group: wt-cash-equal",
+                                        "children": [
+                                          {
+                                            "type": "order",
+                                            "id": "b6c77550-9b3b-4679-8062-88e34292c13c",
+                                            "description": "ProShares UltraPro S&P500",
+                                            "side": "long",
+                                            "size_type": "percent_equity",
+                                            "size": 100.0,
+                                            "allocation": "weighted",
+                                            "weights": {
+                                              "UPRO": 1.0
+                                            },
+                                            "symbol_filter": "UPRO"
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "type": "group",
+                                    "id": "3be7cf3f-bb11-4e97-a121-f38f669651c5",
+                                    "description": "Else branch",
+                                    "children": [
+                                      {
+                                        "type": "group",
+                                        "id": "6c11135d-eabc-4bcd-8e00-24753cbb7a9c",
+                                        "description": "Group: wt-cash-equal",
+                                        "children": [
+                                          {
+                                            "type": "condition",
+                                            "id": "66a7d66a-6a81-4f8d-9775-d2bf28ffcbc5",
+                                            "description": "Conditional logic 6",
+                                            "children": [
+                                              {
+                                                "type": "condition",
+                                                "id": "e733ce9b-eb24-41c2-8cce-41f087871b45",
+                                                "description": "Condition: relative-strength-index gt 74",
+                                                "lhs": {
+                                                  "name": "rsi",
+                                                  "args": {
+                                                    "period": 10
+                                                  },
+                                                  "symbol": "UVXY"
+                                                },
+                                                "operator": "gt",
+                                                "rhs": 74.0,
+                                                "children": [
+                                                  {
+                                                    "type": "group",
+                                                    "id": "8ea5c7b8-72ed-4fdb-9ee9-c22d7e04337e",
+                                                    "description": "Group: wt-cash-equal",
+                                                    "children": [
+                                                      {
+                                                        "type": "condition",
+                                                        "id": "1514ac66-ee46-46a0-8df2-1c321852ee80",
+                                                        "description": "Conditional logic 7",
+                                                        "children": [
+                                                          {
+                                                            "type": "condition",
+                                                            "id": "8d2cad3c-e438-43f9-8dcb-9c15ca0704df",
+                                                            "description": "Condition: relative-strength-index gt 84",
+                                                            "lhs": {
+                                                              "name": "rsi",
+                                                              "args": {
+                                                                "period": 10
+                                                              },
+                                                              "symbol": "UVXY"
+                                                            },
+                                                            "operator": "gt",
+                                                            "rhs": 84.0,
+                                                            "children": [
+                                                              {
+                                                                "type": "group",
+                                                                "id": "ce12d81f-f9b2-4434-8815-ac97ee4a30fd",
+                                                                "description": "Group: wt-cash-equal",
+                                                                "children": [
+                                                                  {
+                                                                    "type": "order",
+                                                                    "id": "04547764-594f-4fa9-98b1-9113b9dc73ed",
+                                                                    "description": "Vanguard Short-Term Bond ETF",
+                                                                    "side": "long",
+                                                                    "size_type": "percent_equity",
+                                                                    "size": 100.0,
+                                                                    "allocation": "weighted",
+                                                                    "weights": {
+                                                                      "BSV": 1.0
+                                                                    },
+                                                                    "symbol_filter": "BSV"
+                                                                  }
+                                                                ]
+                                                              }
+                                                            ]
+                                                          },
+                                                          {
+                                                            "type": "group",
+                                                            "id": "ac34adab-6eea-48f6-8960-d46fd3ff1692",
+                                                            "description": "Else branch",
+                                                            "children": [
+                                                              {
+                                                                "type": "order",
+                                                                "id": "45e1ea06-537e-4c9b-babc-c11bb7e1532e",
+                                                                "description": "ProShares Ultra VIX Short-Term Futures ETF",
+                                                                "side": "long",
+                                                                "size_type": "percent_equity",
+                                                                "size": 100.0,
+                                                                "allocation": "weighted",
+                                                                "weights": {
+                                                                  "UVXY": 1.0
+                                                                },
+                                                                "symbol_filter": "UVXY"
+                                                              }
+                                                            ]
+                                                          }
+                                                        ]
+                                                      }
+                                                    ]
+                                                  }
+                                                ]
+                                              },
+                                              {
+                                                "type": "group",
+                                                "id": "bbeed478-b806-48ef-8d59-a7993a21690a",
+                                                "description": "Else branch",
+                                                "children": [
+                                                  {
+                                                    "type": "group",
+                                                    "id": "9f7c057c-5df5-448b-a56f-1f986c8c568e",
+                                                    "description": "Group: wt-cash-equal",
+                                                    "children": [
+                                                      {
+                                                        "type": "condition",
+                                                        "id": "1dca89a0-2ee3-4052-8566-76e8f0dc80fe",
+                                                        "description": "Conditional logic 8",
+                                                        "children": [
+                                                          {
+                                                            "type": "condition",
+                                                            "id": "148d9e67-eac4-4b6e-abdd-aeccded9e5ae",
+                                                            "description": "Condition: current-price gt TQQQ",
+                                                            "lhs": {
+                                                              "name": "current-price",
+                                                              "args": {},
+                                                              "symbol": "TQQQ"
+                                                            },
+                                                            "operator": "gt",
+                                                            "rhs": {
+                                                              "name": "moving-average-price",
+                                                              "args": {
+                                                                "period": 20
+                                                              },
+                                                              "symbol": "TQQQ"
+                                                            },
+                                                            "children": [
+                                                              {
+                                                                "type": "group",
+                                                                "id": "8136e5ad-64c8-4724-95be-7d99b8957d0b",
+                                                                "description": "Group: wt-cash-equal",
+                                                                "children": [
+                                                                  {
+                                                                    "type": "condition",
+                                                                    "id": "98b851cf-0f79-4327-a666-7ac7c55f17fe",
+                                                                    "description": "Conditional logic 9",
+                                                                    "children": [
+                                                                      {
+                                                                        "type": "condition",
+                                                                        "id": "1359cb4b-b9c7-4be3-8d4a-67b052543aed",
+                                                                        "description": "Condition: current-price lt TQQQ",
+                                                                        "lhs": {
+                                                                          "name": "current-price",
+                                                                          "args": {
+                                                                            "period": 20
+                                                                          },
+                                                                          "symbol": "TQQQ"
+                                                                        },
+                                                                        "operator": "lt",
+                                                                        "rhs": {
+                                                                          "name": "moving-average-price",
+                                                                          "args": {
+                                                                            "period": 50
+                                                                          },
+                                                                          "symbol": "TQQQ"
+                                                                        },
+                                                                        "children": [
+                                                                          {
+                                                                            "type": "group",
+                                                                            "id": "ce8c5726-e7fe-4d2f-989c-1bba30bf28f7",
+                                                                            "description": "Group: wt-cash-equal",
+                                                                            "children": [
+                                                                              {
+                                                                                "type": "condition",
+                                                                                "id": "fdab419a-1fd7-4cc5-a0db-0226478f607c",
+                                                                                "description": "Conditional logic 10",
+                                                                                "children": [
+                                                                                  {
+                                                                                    "type": "condition",
+                                                                                    "id": "4c01682e-fcfc-469b-ab8c-b31f74221e3a",
+                                                                                    "description": "Condition: relative-strength-index lt 29",
+                                                                                    "lhs": {
+                                                                                      "name": "rsi",
+                                                                                      "args": {
+                                                                                        "period": 5
+                                                                                      },
+                                                                                      "symbol": "PSQ"
+                                                                                    },
+                                                                                    "operator": "lt",
+                                                                                    "rhs": 29.0,
+                                                                                    "children": [
+                                                                                      {
+                                                                                        "type": "order",
+                                                                                        "id": "a0eb8370-b08a-4be9-99af-27ede2ab1bc6",
+                                                                                        "description": "ProShares UltraPro Short QQQ",
+                                                                                        "side": "long",
+                                                                                        "size_type": "percent_equity",
+                                                                                        "size": 100.0,
+                                                                                        "allocation": "weighted",
+                                                                                        "weights": {
+                                                                                          "SQQQ": 1.0
+                                                                                        },
+                                                                                        "symbol_filter": "SQQQ"
+                                                                                      }
+                                                                                    ]
+                                                                                  },
+                                                                                  {
+                                                                                    "type": "group",
+                                                                                    "id": "8604f216-84aa-4adc-a1fb-66c5bd6faa40",
+                                                                                    "description": "Else branch",
+                                                                                    "children": [
+                                                                                      {
+                                                                                        "type": "order",
+                                                                                        "id": "44b01b52-e86f-48d3-b3d9-793369fac6ca",
+                                                                                        "description": "ProShares UltraPro QQQ",
+                                                                                        "side": "long",
+                                                                                        "size_type": "percent_equity",
+                                                                                        "size": 100.0,
+                                                                                        "allocation": "weighted",
+                                                                                        "weights": {
+                                                                                          "TQQQ": 1.0
+                                                                                        },
+                                                                                        "symbol_filter": "TQQQ"
+                                                                                      }
+                                                                                    ]
+                                                                                  }
+                                                                                ]
+                                                                              }
+                                                                            ]
+                                                                          }
+                                                                        ]
+                                                                      },
+                                                                      {
+                                                                        "type": "group",
+                                                                        "id": "260aaabf-d91f-4246-a248-6c96865e0b9c",
+                                                                        "description": "Else branch",
+                                                                        "children": [
+                                                                          {
+                                                                            "type": "group",
+                                                                            "id": "2a8cab8d-e00b-426d-b539-668051fb42e3",
+                                                                            "description": "Group: wt-cash-equal",
+                                                                            "children": [
+                                                                              {
+                                                                                "type": "condition",
+                                                                                "id": "8f433527-ba8f-4454-a4eb-4caca557b58c",
+                                                                                "description": "Conditional logic 11",
+                                                                                "children": [
+                                                                                  {
+                                                                                    "type": "condition",
+                                                                                    "id": "05ad5119-3e24-4003-959a-31f2cc88a854",
+                                                                                    "description": "Condition: relative-strength-index lt 30",
+                                                                                    "lhs": {
+                                                                                      "name": "rsi",
+                                                                                      "args": {
+                                                                                        "period": 9
+                                                                                      },
+                                                                                      "symbol": "SQQQ"
+                                                                                    },
+                                                                                    "operator": "lt",
+                                                                                    "rhs": 30.0,
+                                                                                    "children": [
+                                                                                      {
+                                                                                        "type": "order",
+                                                                                        "id": "c4eb659c-cc90-44bd-91bc-c8c30274f17e",
+                                                                                        "description": "ProShares UltraPro Short QQQ",
+                                                                                        "side": "long",
+                                                                                        "size_type": "percent_equity",
+                                                                                        "size": 100.0,
+                                                                                        "allocation": "weighted",
+                                                                                        "weights": {
+                                                                                          "SQQQ": 1.0
+                                                                                        },
+                                                                                        "symbol_filter": "SQQQ"
+                                                                                      }
+                                                                                    ]
+                                                                                  },
+                                                                                  {
+                                                                                    "type": "group",
+                                                                                    "id": "e9fd0d23-8fed-4c9d-a92d-5d1d59cc680e",
+                                                                                    "description": "Else branch",
+                                                                                    "children": [
+                                                                                      {
+                                                                                        "type": "order",
+                                                                                        "id": "307710e7-5b78-495c-bf2d-72673090169a",
+                                                                                        "description": "ProShares UltraPro QQQ",
+                                                                                        "side": "long",
+                                                                                        "size_type": "percent_equity",
+                                                                                        "size": 100.0,
+                                                                                        "allocation": "weighted",
+                                                                                        "weights": {
+                                                                                          "TQQQ": 1.0
+                                                                                        },
+                                                                                        "symbol_filter": "TQQQ"
+                                                                                      }
+                                                                                    ]
+                                                                                  }
+                                                                                ]
+                                                                              }
+                                                                            ]
+                                                                          }
+                                                                        ]
+                                                                      }
+                                                                    ]
+                                                                  }
+                                                                ]
+                                                              }
+                                                            ]
+                                                          },
+                                                          {
+                                                            "type": "group",
+                                                            "id": "f6b7d1b1-6adb-4cb0-89d2-aff6e2a24bb7",
+                                                            "description": "Else branch",
+                                                            "children": [
+                                                              {
+                                                                "type": "group",
+                                                                "id": "a882b0a2-18b2-4192-8fc5-e8263bd0064f",
+                                                                "description": "Group: wt-cash-equal",
+                                                                "children": [
+                                                                  {
+                                                                    "type": "filter",
+                                                                    "id": "a629d55d-f14e-4d49-b27f-bce1587e904d",
+                                                                    "description": "Select top 1 by relative-strength-index",
+                                                                    "universe": [
+                                                                      "SQQQ",
+                                                                      "BSV"
+                                                                    ],
+                                                                    "select": "top",
+                                                                    "selection": {
+                                                                      "n": 1
+                                                                    },
+                                                                    "metric": {
+                                                                      "name": "rsi",
+                                                                      "args": {
+                                                                        "period": 9
+                                                                      }
+                                                                    }
+                                                                  }
+                                                                ]
+                                                              }
+                                                            ]
+                                                          }
+                                                        ]
+                                                      }
+                                                    ]
+                                                  }
+                                                ]
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

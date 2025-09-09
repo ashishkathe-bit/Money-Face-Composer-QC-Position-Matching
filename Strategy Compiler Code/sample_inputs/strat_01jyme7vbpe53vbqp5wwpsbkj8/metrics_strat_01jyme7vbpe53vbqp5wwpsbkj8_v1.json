@@ -1,0 +1,16 @@
+{
+  "strategy_id": "strat_01jyme7vbpe53vbqp5wwpsbkj8",
+  "strategy_name": "best rebalancer | Deez | ",
+  "strategy_description": "",
+  "version_id": "strat_01jyme7vbpe53vbqp5wwpsbkj8_v1",
+  "version": 1,
+  "cumulative_return": -0.173453,
+  "annualized_return": -5.06810288074249,
+  "sharpe_ratio": 0.338788050911145,
+  "beta": 2.3873,
+  "max_drawdown": 89.6830020276826,
+  "backtest_start_date": "1990-01-01",
+  "backtest_end_date": "2025-06-25",
+  "created_at": "2025-06-25T20:59:59.353204+00:00",
+  "plain_english_summary": "# Strategy: best rebalancer | Deez | \nSource: https://app.composer.trade/symphony/bCIMJ7nVHIQ2CCeoypYh/details\n\n**Complexity**: Medium (4/10)\n**Category**: Tactical\n\n## Trading Universe\nThis strategy can trade 8 assets:\n\n\u2022 **Stocks**: QQQ, UVXY, MSTR, BITO, COIN, RIOT, MARA, BITF\n\n## Strategy Settings\n\u2022 **Rebalancing**: No regular rebalancing\n\u2022 **Initial Capital**: USD 100,000\n\u2022 **Trading Fees**: 0.10% per trade\n\n## Investment Logic\n\n```\n\u2022 Equal Weight Allocation:\n  \u25e6 If :\n    \u25aa If QQQ's RSI (Relative Strength Index) (10-day) is greater than 75.0:\n      - Buy UVXY (100% of portfolio)\n    \u25aa Else branch:\n      - Equal Weight Allocation:\n        - Buy MSTR (100% of portfolio)\n        - Buy BITO (100% of portfolio)\n        - Buy COIN (100% of portfolio)\n        - Buy RIOT (100% of portfolio)\n        - Buy MARA (100% of portfolio)\n        - Buy BITF (100% of portfolio)\n```\n\n## Technical Details\n\u2022 **Source Platform**: Composer\n\u2022 **Source ID**: bCIMJ7nVHIQ2CCeoypYh\n\u2022 **Created**: June 25, 2025\n\u2022 **Slippage Model**: 0.10% per trade\n"
+}

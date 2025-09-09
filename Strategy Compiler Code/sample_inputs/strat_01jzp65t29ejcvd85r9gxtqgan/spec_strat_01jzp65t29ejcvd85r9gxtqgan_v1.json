@@ -1,0 +1,387 @@
+{
+  "meta": {
+    "name": "\u2622\ufe0f NASDAQ-X DeETF | $Deez | BT - 14NOV2019 - AR: 346.1% DD: 38.8% - Live (Buy Copy)",
+    "description": "",
+    "version": "1.0",
+    "source": "composer",
+    "source_id": "A58i2tYvnHUlWVMkA4eZ",
+    "source_url": "https://app.composer.trade/symphony/A58i2tYvnHUlWVMkA4eZ/details",
+    "category": "tactical",
+    "complexity_score": 7,
+    "created_at": "2025-07-08T23:33:14.441388Z",
+    "updated_at": "2025-07-08T23:33:14.441393Z"
+  },
+  "settings": {
+    "capital": 100000.0,
+    "currency": "USD",
+    "rebalance": "daily",
+    "fees": {
+      "percentage": 0.001
+    },
+    "slippage": {
+      "model": "percentage",
+      "value": 0.001
+    }
+  },
+  "universe": [
+    {
+      "symbol": "SPY",
+      "name": "",
+      "assetClass": "EQUITY"
+    },
+    {
+      "symbol": "VIXM",
+      "name": "ProShares VIX Mid-Term Futures ETF",
+      "assetClass": "EQUITY",
+      "exchange": "BATS"
+    },
+    {
+      "symbol": "TECL",
+      "name": "Direxion Daily Technology Bull 3x Shares",
+      "assetClass": "EQUITY",
+      "exchange": "ARCX"
+    },
+    {
+      "symbol": "TNA",
+      "name": "Direxion Daily Small Cap Bull 3x Shares",
+      "assetClass": "EQUITY",
+      "exchange": "ARCX"
+    },
+    {
+      "symbol": "SPXL",
+      "name": "Direxion Daily S&P 500 Bull 3x Shares",
+      "assetClass": "EQUITY",
+      "exchange": "ARCX"
+    },
+    {
+      "symbol": "MSFT",
+      "name": "Microsoft Corporation",
+      "assetClass": "EQUITY",
+      "exchange": "XNAS"
+    },
+    {
+      "symbol": "AAPL",
+      "name": "Apple Inc.",
+      "assetClass": "EQUITY",
+      "exchange": "XNAS"
+    },
+    {
+      "symbol": "GD",
+      "name": "General Dynamics Corporation",
+      "assetClass": "EQUITY",
+      "exchange": "XNYS"
+    },
+    {
+      "symbol": "RTX",
+      "name": "Raytheon Technologies Corporation",
+      "assetClass": "EQUITY",
+      "exchange": "XNYS"
+    },
+    {
+      "symbol": "NOC",
+      "name": "Northrop Grumman Corp.",
+      "assetClass": "EQUITY",
+      "exchange": "XNYS"
+    },
+    {
+      "symbol": "AMZN",
+      "name": "Amazon.com, Inc.",
+      "assetClass": "EQUITY",
+      "exchange": "XNAS"
+    },
+    {
+      "symbol": "GOOGL",
+      "name": "Alphabet Inc. Class A",
+      "assetClass": "EQUITY",
+      "exchange": "XNAS"
+    },
+    {
+      "symbol": "META",
+      "name": "Meta Platforms Inc. Class A",
+      "assetClass": "EQUITY",
+      "exchange": "XNAS"
+    },
+    {
+      "symbol": "PEP",
+      "name": "PepsiCo, Inc.",
+      "assetClass": "EQUITY",
+      "exchange": "XNAS"
+    },
+    {
+      "symbol": "MSTR",
+      "name": "MicroStrategy Incorporated Class A",
+      "assetClass": "EQUITY",
+      "exchange": "XNAS"
+    },
+    {
+      "symbol": "NVDA",
+      "name": "NVIDIA Corporation",
+      "assetClass": "EQUITY",
+      "exchange": "XNAS"
+    },
+    {
+      "symbol": "TSLA",
+      "name": "Tesla Inc",
+      "assetClass": "EQUITY",
+      "exchange": "XNAS"
+    },
+    {
+      "symbol": "AMD",
+      "name": "Advanced Micro Devices, Inc.",
+      "assetClass": "EQUITY",
+      "exchange": "XNAS"
+    },
+    {
+      "symbol": "INTC",
+      "name": "Intel Corporation",
+      "assetClass": "EQUITY",
+      "exchange": "XNAS"
+    },
+    {
+      "symbol": "NFLX",
+      "name": "Netflix, Inc.",
+      "assetClass": "EQUITY",
+      "exchange": "XNAS"
+    },
+    {
+      "symbol": "AMGN",
+      "name": "Amgen Inc.",
+      "assetClass": "EQUITY",
+      "exchange": "XNAS"
+    },
+    {
+      "symbol": "CSCO",
+      "name": "Cisco Systems, Inc.",
+      "assetClass": "EQUITY",
+      "exchange": "XNAS"
+    },
+    {
+      "symbol": "TMUS",
+      "name": "T-Mobile US, Inc.",
+      "assetClass": "EQUITY",
+      "exchange": "XNAS"
+    },
+    {
+      "symbol": "AVGO",
+      "name": "Broadcom Inc.",
+      "assetClass": "EQUITY",
+      "exchange": "XNAS"
+    },
+    {
+      "symbol": "SBUX",
+      "name": "Starbucks Corporation",
+      "assetClass": "EQUITY",
+      "exchange": "XNAS"
+    }
+  ],
+  "logic": {
+    "type": "group",
+    "id": "1969811f-1b8d-4606-a04a-c8fbc17d1334",
+    "description": "Group: wt-cash-equal",
+    "children": [
+      {
+        "type": "group",
+        "id": "8500f76e-a6bd-47aa-9e39-29bde89e4a92",
+        "description": "V 1.2 | \u2622\ufe0f NASDAQ-X DeETF | Deez | AR: 83% DD: 25.6% - 1JAN2019",
+        "children": [
+          {
+            "type": "group",
+            "id": "ba0091c8-70af-486b-a09d-398f1a274d20",
+            "description": "Group: wt-cash-equal",
+            "children": [
+              {
+                "type": "condition",
+                "id": "48c580ba-5e9b-4ff8-89fe-6a53df3d5308",
+                "description": "Conditional logic 1",
+                "children": [
+                  {
+                    "type": "condition",
+                    "id": "eb621806-951f-4500-88b8-0d5f3ff81eb9",
+                    "description": "Condition: relative-strength-index gt 77",
+                    "lhs": {
+                      "name": "rsi",
+                      "args": {
+                        "period": 14
+                      },
+                      "symbol": "SPY"
+                    },
+                    "operator": "gt",
+                    "rhs": 77.0,
+                    "children": [
+                      {
+                        "type": "group",
+                        "id": "a1fd1d65-a314-4108-927d-92c20c107d1b",
+                        "description": "Group: wt-cash-equal",
+                        "children": [
+                          {
+                            "type": "order",
+                            "id": "a1212c0e-35b4-41d5-8933-028aa6d50941",
+                            "description": "ProShares VIX Mid-Term Futures ETF",
+                            "side": "long",
+                            "size_type": "percent_equity",
+                            "size": 100.0,
+                            "allocation": "weighted",
+                            "weights": {
+                              "VIXM": 1.0
+                            },
+                            "symbol_filter": "VIXM"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "group",
+                    "id": "89600bf2-f069-47ed-81cc-5332a09f20cb",
+                    "description": "Else branch",
+                    "children": [
+                      {
+                        "type": "group",
+                        "id": "ced4154a-7ae7-4358-8e35-53e41cb728ab",
+                        "description": "Group: wt-cash-equal",
+                        "children": [
+                          {
+                            "type": "condition",
+                            "id": "d774fde3-3874-40c0-be20-aaa0ae72bfed",
+                            "description": "Conditional logic 2",
+                            "children": [
+                              {
+                                "type": "condition",
+                                "id": "85047b94-e7c9-4d39-882e-d36762354da2",
+                                "description": "Condition: relative-strength-index lt 30",
+                                "lhs": {
+                                  "name": "rsi",
+                                  "args": {
+                                    "period": 14
+                                  },
+                                  "symbol": "SPY"
+                                },
+                                "operator": "lt",
+                                "rhs": 30.0,
+                                "children": [
+                                  {
+                                    "type": "group",
+                                    "id": "fcb02235-0243-48b5-aba1-ef7325839b99",
+                                    "description": "Group: wt-cash-equal",
+                                    "children": [
+                                      {
+                                        "type": "filter",
+                                        "id": "7fbcc660-5550-43c7-9801-793187b64835",
+                                        "description": "Select top 2 by cumulative-return",
+                                        "universe": [
+                                          "TECL",
+                                          "TNA",
+                                          "SPXL"
+                                        ],
+                                        "select": "top",
+                                        "selection": {
+                                          "n": 2
+                                        },
+                                        "metric": {
+                                          "name": "cumulative-return",
+                                          "args": {
+                                            "period": 45
+                                          }
+                                        },
+                                        "allocation": "weighted",
+                                        "size": 10.0,
+                                        "weights": {
+                                          "TECL": 0.1,
+                                          "TNA": 0.1,
+                                          "SPXL": 0.1
+                                        }
+                                      }
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "type": "group",
+                                "id": "b935d9e8-959c-4ab6-b9a7-e6c874a84765",
+                                "description": "Else branch",
+                                "children": [
+                                  {
+                                    "type": "group",
+                                    "id": "81b68625-3350-400a-b926-be40cfa1b568",
+                                    "description": "Group: wt-cash-equal",
+                                    "children": [
+                                      {
+                                        "type": "filter",
+                                        "id": "6869a586-3738-4a12-893a-42dc675e96ab",
+                                        "description": "Select top 3 by relative-strength-index",
+                                        "universe": [
+                                          "MSFT",
+                                          "AAPL",
+                                          "GD",
+                                          "RTX",
+                                          "NOC",
+                                          "AMZN",
+                                          "GOOGL",
+                                          "META",
+                                          "PEP",
+                                          "MSTR",
+                                          "NVDA",
+                                          "TSLA",
+                                          "AMD",
+                                          "INTC",
+                                          "NFLX",
+                                          "AMGN",
+                                          "CSCO",
+                                          "TMUS",
+                                          "AVGO",
+                                          "SBUX"
+                                        ],
+                                        "select": "top",
+                                        "selection": {
+                                          "n": 3
+                                        },
+                                        "metric": {
+                                          "name": "rsi",
+                                          "args": {
+                                            "period": 46
+                                          }
+                                        },
+                                        "allocation": "weighted",
+                                        "size": 90.0,
+                                        "weights": {
+                                          "MSFT": 0.9,
+                                          "AAPL": 0.9,
+                                          "GD": 0.9,
+                                          "RTX": 0.9,
+                                          "NOC": 0.9,
+                                          "AMZN": 0.9,
+                                          "GOOGL": 0.9,
+                                          "META": 0.9,
+                                          "PEP": 0.9,
+                                          "MSTR": 0.9,
+                                          "NVDA": 0.9,
+                                          "TSLA": 0.9,
+                                          "AMD": 0.9,
+                                          "INTC": 0.9,
+                                          "NFLX": 0.9,
+                                          "AMGN": 0.9,
+                                          "CSCO": 0.9,
+                                          "TMUS": 0.9,
+                                          "AVGO": 0.9,
+                                          "SBUX": 0.9
+                                        }
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,189 @@
+{
+  "meta": {
+    "name": "SSO, Energy, Chips, Commodities ? (Invest Copy)",
+    "description": "",
+    "version": "1.0",
+    "source": "composer",
+    "source_id": "tCu5bdNyx1cSriFS1KVJ",
+    "source_url": "https://app.composer.trade/symphony/tCu5bdNyx1cSriFS1KVJ/details",
+    "category": "tactical",
+    "complexity_score": 4,
+    "created_at": "2025-06-27T03:51:19.006174Z",
+    "updated_at": "2025-06-27T03:51:19.006186Z"
+  },
+  "settings": {
+    "capital": 100000.0,
+    "currency": "USD",
+    "rebalance": "daily",
+    "fees": {
+      "percentage": 0.001
+    },
+    "slippage": {
+      "model": "percentage",
+      "value": 0.001
+    }
+  },
+  "universe": [
+    {
+      "symbol": "VIXM",
+      "name": "ProShares VIX Mid-Term Futures ETF",
+      "assetClass": "EQUITY",
+      "exchange": "BATS"
+    },
+    {
+      "symbol": "SOXX",
+      "name": "iShares Semiconductor ETF",
+      "assetClass": "EQUITY",
+      "exchange": "XNAS"
+    },
+    {
+      "symbol": "NVDA",
+      "name": "NVIDIA Corporation",
+      "assetClass": "EQUITY",
+      "exchange": "XNAS"
+    },
+    {
+      "symbol": "AMD",
+      "name": "Advanced Micro Devices, Inc.",
+      "assetClass": "EQUITY",
+      "exchange": "XNAS"
+    },
+    {
+      "symbol": "SSO",
+      "name": "ProShares Ultra S&P 500",
+      "assetClass": "EQUITY",
+      "exchange": "ARCX"
+    },
+    {
+      "symbol": "DBC",
+      "name": "Invesco DB Commodity Index Tracking Fund",
+      "assetClass": "EQUITY",
+      "exchange": "ARCX"
+    },
+    {
+      "symbol": "XLE",
+      "name": "Energy Select Sector SPDR Fund",
+      "assetClass": "EQUITY",
+      "exchange": "ARCX"
+    },
+    {
+      "symbol": "ENPH",
+      "name": "Enphase Energy, Inc.",
+      "assetClass": "EQUITY",
+      "exchange": "XNAS"
+    }
+  ],
+  "logic": {
+    "type": "group",
+    "id": "31862f4e-a4d0-469d-bc56-572e0b317c66",
+    "description": "Group: wt-cash-equal",
+    "children": [
+      {
+        "type": "group",
+        "id": "75c4ff6a-55c0-4d24-a2e9-bad7c809fc82",
+        "description": "Black Swan Catcher",
+        "children": [
+          {
+            "type": "group",
+            "id": "32422cb2-00e9-4b60-be3a-50176623a8db",
+            "description": "Group: wt-cash-equal",
+            "children": [
+              {
+                "type": "condition",
+                "id": "93d88984-7ee0-4895-8cce-114439488ca5",
+                "description": "Conditional logic 1",
+                "children": [
+                  {
+                    "type": "condition",
+                    "id": "0c4d7782-494a-40f9-a016-0425826a0612",
+                    "description": "Condition: relative-strength-index gt 69",
+                    "lhs": {
+                      "name": "rsi",
+                      "args": {
+                        "period": 40
+                      },
+                      "symbol": "VIXM"
+                    },
+                    "operator": "gt",
+                    "rhs": 69.0,
+                    "children": [
+                      {
+                        "type": "order",
+                        "id": "2af33924-ecff-46f5-85f1-3f147232f7a8",
+                        "description": "ProShares VIX Mid-Term Futures ETF",
+                        "side": "long",
+                        "size_type": "percent_equity",
+                        "size": 100.0,
+                        "allocation": "weighted",
+                        "weights": {
+                          "VIXM": 1.0
+                        },
+                        "symbol_filter": "VIXM"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "group",
+                    "id": "f3823e57-21f5-4caf-bad8-6a04510a9450",
+                    "description": "Else branch",
+                    "children": [
+                      {
+                        "type": "group",
+                        "id": "f05f5762-373e-4954-b042-ba9d72c4144c",
+                        "description": "Rotator",
+                        "children": [
+                          {
+                            "type": "group",
+                            "id": "a91b3540-3282-49db-95b6-952e4ea85e2a",
+                            "description": "Group: wt-cash-equal",
+                            "children": [
+                              {
+                                "type": "filter",
+                                "id": "a4ce14c0-8ee4-4737-80b6-9529bdb97f1d",
+                                "description": "Select top 1 by moving-average-return",
+                                "universe": [
+                                  "SOXX",
+                                  "NVDA",
+                                  "AMD",
+                                  "SSO",
+                                  "DBC",
+                                  "XLE",
+                                  "ENPH"
+                                ],
+                                "select": "top",
+                                "selection": {
+                                  "n": 1
+                                },
+                                "metric": {
+                                  "name": "returns",
+                                  "args": {
+                                    "period": 90
+                                  }
+                                },
+                                "allocation": "weighted",
+                                "size": 100.0,
+                                "weights": {
+                                  "SOXX": 1.0,
+                                  "NVDA": 1.0,
+                                  "AMD": 1.0,
+                                  "SSO": 1.0,
+                                  "DBC": 1.0,
+                                  "XLE": 1.0,
+                                  "ENPH": 1.0
+                                }
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

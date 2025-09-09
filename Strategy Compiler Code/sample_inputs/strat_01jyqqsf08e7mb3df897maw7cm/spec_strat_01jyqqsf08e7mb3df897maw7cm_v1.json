@@ -1,0 +1,208 @@
+{
+  "meta": {
+    "name": "\ud83e\uddea BlackSwan Portfolio | Cashen Mod (Invest Copy)",
+    "description": "https://bit.ly/GenesisLaunch - https://bit.ly/investorcollabdiscord",
+    "version": "1.0",
+    "source": "composer",
+    "source_id": "QKjIRxk3HKoYc5yw8XXD",
+    "source_url": "https://app.composer.trade/symphony/QKjIRxk3HKoYc5yw8XXD/details",
+    "category": "tactical",
+    "complexity_score": 5,
+    "created_at": "2025-06-27T03:44:36.872894Z",
+    "updated_at": "2025-06-27T03:44:36.872906Z"
+  },
+  "settings": {
+    "capital": 100000.0,
+    "currency": "USD",
+    "rebalance": "daily",
+    "fees": {
+      "percentage": 0.001
+    },
+    "slippage": {
+      "model": "percentage",
+      "value": 0.001
+    }
+  },
+  "universe": [
+    {
+      "symbol": "SHY",
+      "name": "",
+      "assetClass": "EQUITY"
+    },
+    {
+      "symbol": "QQQ",
+      "name": "",
+      "assetClass": "EQUITY"
+    },
+    {
+      "symbol": "TQQQ",
+      "name": "ProShares UltraPro QQQ",
+      "assetClass": "EQUITY",
+      "exchange": "XNAS"
+    },
+    {
+      "symbol": "UPRO",
+      "name": "ProShares UltraPro S&P500",
+      "assetClass": "EQUITY",
+      "exchange": "ARCX"
+    },
+    {
+      "symbol": "SQQQ",
+      "name": "ProShares UltraPro Short QQQ",
+      "assetClass": "EQUITY",
+      "exchange": "XNAS"
+    },
+    {
+      "symbol": "BIL",
+      "name": "SPDR Bloomberg 1-3 Month T-Bill ETF",
+      "assetClass": "EQUITY",
+      "exchange": "ARCX"
+    }
+  ],
+  "logic": {
+    "type": "group",
+    "id": "76a76442-48cf-4732-9a8b-d49ac0f76d7f",
+    "description": "Group: wt-cash-equal",
+    "children": [
+      {
+        "type": "group",
+        "id": "9d059e02-1d83-41bc-a79d-095c88a2636a",
+        "description": "BlackSwan Portfolio",
+        "children": [
+          {
+            "type": "group",
+            "id": "d906f12f-0577-48aa-bd50-89e048508a70",
+            "description": "Group: wt-cash-equal",
+            "children": [
+              {
+                "type": "condition",
+                "id": "c4c70e7c-9b68-4e0e-8853-48bc191c442c",
+                "description": "Conditional logic 1",
+                "children": [
+                  {
+                    "type": "condition",
+                    "id": "39a3df6e-5627-48de-a039-1e4c5e06046e",
+                    "description": "Condition: moving-average-return gt 0",
+                    "lhs": {
+                      "name": "returns",
+                      "args": {
+                        "period": 5
+                      },
+                      "symbol": "SHY"
+                    },
+                    "operator": "gt",
+                    "children": [
+                      {
+                        "type": "group",
+                        "id": "ca3cab6a-1a49-4a91-b533-4fa19565e9fd",
+                        "description": "Group: wt-cash-equal",
+                        "children": [
+                          {
+                            "type": "condition",
+                            "id": "117c1579-ca92-4904-b198-c3498553396a",
+                            "description": "Conditional logic 2",
+                            "children": [
+                              {
+                                "type": "condition",
+                                "id": "d46c7212-1d19-4164-a304-fb0d324db13e",
+                                "description": "Condition: cumulative-return lt 3",
+                                "lhs": {
+                                  "name": "cumulative-return",
+                                  "args": {
+                                    "period": 1
+                                  },
+                                  "symbol": "QQQ"
+                                },
+                                "operator": "lt",
+                                "rhs": 3.0,
+                                "children": [
+                                  {
+                                    "type": "order",
+                                    "id": "65e0ecd8-487f-4e1c-82af-e12927e0e787",
+                                    "description": "ProShares UltraPro QQQ",
+                                    "side": "long",
+                                    "size_type": "percent_equity",
+                                    "size": 100.0,
+                                    "allocation": "weighted",
+                                    "weights": {
+                                      "TQQQ": 1.0
+                                    },
+                                    "symbol_filter": "TQQQ"
+                                  },
+                                  {
+                                    "type": "order",
+                                    "id": "f50348e3-c1a3-4ea8-9e0e-c2f9e7918f55",
+                                    "description": "ProShares UltraPro S&P500",
+                                    "side": "long",
+                                    "size_type": "percent_equity",
+                                    "size": 100.0,
+                                    "allocation": "weighted",
+                                    "weights": {
+                                      "UPRO": 1.0
+                                    },
+                                    "symbol_filter": "UPRO"
+                                  }
+                                ]
+                              },
+                              {
+                                "type": "group",
+                                "id": "11c53968-4f5b-4c31-a111-c71bc3c034cb",
+                                "description": "Else branch",
+                                "children": [
+                                  {
+                                    "type": "order",
+                                    "id": "072f8ef9-c09d-4547-837f-38e82b612cc4",
+                                    "description": "ProShares UltraPro Short QQQ",
+                                    "side": "long",
+                                    "size_type": "percent_equity",
+                                    "size": 100.0,
+                                    "allocation": "weighted",
+                                    "weights": {
+                                      "SQQQ": 1.0
+                                    },
+                                    "symbol_filter": "SQQQ"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "group",
+                    "id": "a474a959-337b-43ab-855e-e0b8dfc5fa1e",
+                    "description": "Else branch",
+                    "children": [
+                      {
+                        "type": "group",
+                        "id": "cc4d979b-dda5-4e38-822e-77063daadb45",
+                        "description": "Group: wt-cash-equal",
+                        "children": [
+                          {
+                            "type": "order",
+                            "id": "2cf65953-e437-46f8-abc4-7445707f99de",
+                            "description": "SPDR Bloomberg 1-3 Month T-Bill ETF",
+                            "side": "long",
+                            "size_type": "percent_equity",
+                            "size": 100.0,
+                            "allocation": "weighted",
+                            "weights": {
+                              "BIL": 1.0
+                            },
+                            "symbol_filter": "BIL"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

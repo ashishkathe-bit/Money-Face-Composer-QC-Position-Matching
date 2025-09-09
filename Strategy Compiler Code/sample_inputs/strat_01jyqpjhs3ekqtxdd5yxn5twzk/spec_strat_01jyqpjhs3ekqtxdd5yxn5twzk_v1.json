@@ -1,0 +1,509 @@
+{
+  "meta": {
+    "name": "TQQQ Daily 60d Bond Trend, 2d Bond Trend, Drawdown, Vix (Invest Copy)",
+    "description": "",
+    "version": "1.0",
+    "source": "composer",
+    "source_id": "AAFfE3qtz2JCxAoT9Tbw",
+    "source_url": "https://app.composer.trade/symphony/AAFfE3qtz2JCxAoT9Tbw/details",
+    "category": "tactical",
+    "complexity_score": 8,
+    "created_at": "2025-06-27T03:23:21.763761Z",
+    "updated_at": "2025-06-27T03:23:21.763774Z"
+  },
+  "settings": {
+    "capital": 100000.0,
+    "currency": "USD",
+    "rebalance": "daily",
+    "fees": {
+      "percentage": 0.001
+    },
+    "slippage": {
+      "model": "percentage",
+      "value": 0.001
+    }
+  },
+  "universe": [
+    {
+      "symbol": "BND",
+      "name": "",
+      "assetClass": "EQUITY"
+    },
+    {
+      "symbol": "BIL",
+      "name": "",
+      "assetClass": "EQUITY"
+    },
+    {
+      "symbol": "QQQ",
+      "name": "",
+      "assetClass": "EQUITY"
+    },
+    {
+      "symbol": "SVXY",
+      "name": "",
+      "assetClass": "EQUITY"
+    },
+    {
+      "symbol": "TMF",
+      "name": "Direxion Daily 20+ Year Treasury Bull 3X Shares",
+      "assetClass": "EQUITY",
+      "exchange": "ARCX"
+    },
+    {
+      "symbol": "TQQQ",
+      "name": "ProShares UltraPro QQQ",
+      "assetClass": "EQUITY",
+      "exchange": "XNAS"
+    },
+    {
+      "symbol": "IEF",
+      "name": "iShares 7-10 Year Treasury Bond ETF",
+      "assetClass": "EQUITY",
+      "exchange": "XNAS"
+    },
+    {
+      "symbol": "UUP",
+      "name": "Invesco DB US Dollar Index Bullish Fund",
+      "assetClass": "EQUITY",
+      "exchange": "ARCX"
+    },
+    {
+      "symbol": "GLD",
+      "name": "SPDR Gold Shares",
+      "assetClass": "EQUITY",
+      "exchange": "ARCX"
+    }
+  ],
+  "logic": {
+    "type": "group",
+    "id": "6522f4b8-89b4-4bb5-9947-8722c197a4d8",
+    "description": "Group: wt-cash-equal",
+    "children": [
+      {
+        "type": "condition",
+        "id": "e5fcb66b-57e7-4e36-a20e-0ca180644725",
+        "description": "Conditional logic 1",
+        "children": [
+          {
+            "type": "condition",
+            "id": "f64e9293-a8ec-4123-bafe-80def874934e",
+            "description": "Condition: cumulative-return gte BIL",
+            "lhs": {
+              "name": "cumulative-return",
+              "args": {
+                "period": 60
+              },
+              "symbol": "BND"
+            },
+            "operator": "gte",
+            "rhs": {
+              "name": "cumulative-return",
+              "args": {
+                "period": 60
+              },
+              "symbol": "BIL"
+            },
+            "children": [
+              {
+                "type": "group",
+                "id": "e24ef8c0-ea61-4ce2-b259-05e8079faed1",
+                "description": "Rates are not going up",
+                "children": [
+                  {
+                    "type": "group",
+                    "id": "37b0a57a-a190-4a6f-96d1-24b48b435ab7",
+                    "description": "Group: wt-cash-equal",
+                    "children": [
+                      {
+                        "type": "condition",
+                        "id": "86dbc35a-45bc-4577-b341-f8ede36f2ec1",
+                        "description": "Conditional logic 2",
+                        "children": [
+                          {
+                            "type": "condition",
+                            "id": "4737b08c-051e-4b1b-a2bb-b6f70f8cec2e",
+                            "description": "Condition: max-drawdown gt 5",
+                            "lhs": {
+                              "name": "max-drawdown",
+                              "args": {
+                                "period": 10
+                              },
+                              "symbol": "QQQ"
+                            },
+                            "operator": "gt",
+                            "rhs": 5.0,
+                            "children": [
+                              {
+                                "type": "group",
+                                "id": "be377edc-b4b7-4433-af22-775ef5c16fac",
+                                "description": "QQQ was down recently",
+                                "children": [
+                                  {
+                                    "type": "group",
+                                    "id": "32816f37-d669-414a-a882-e3a009e69ac4",
+                                    "description": "Group: wt-cash-equal",
+                                    "children": [
+                                      {
+                                        "type": "condition",
+                                        "id": "5bfdf397-3449-4119-bfa2-6c3d4e3d1c5c",
+                                        "description": "Conditional logic 3",
+                                        "children": [
+                                          {
+                                            "type": "condition",
+                                            "id": "9d47db41-6bd1-4b10-94a5-e0f8ffb617b4",
+                                            "description": "Condition: cumulative-return lte 0",
+                                            "lhs": {
+                                              "name": "cumulative-return",
+                                              "args": {
+                                                "period": 5
+                                              },
+                                              "symbol": "SVXY"
+                                            },
+                                            "operator": "lte",
+                                            "children": [
+                                              {
+                                                "type": "group",
+                                                "id": "dc06938e-71d7-4b1c-a96b-4739becf574c",
+                                                "description": "High Vol",
+                                                "children": [
+                                                  {
+                                                    "type": "group",
+                                                    "id": "0777bb76-e32f-497c-82f6-cbc93767b0bb",
+                                                    "description": "Group: wt-cash-equal",
+                                                    "children": [
+                                                      {
+                                                        "type": "order",
+                                                        "id": "dc2cd914-e088-42d4-891b-7b9d2c4c99d4",
+                                                        "description": "Direxion Daily 20+ Year Treasury Bull 3X Shares",
+                                                        "side": "long",
+                                                        "size_type": "percent_equity",
+                                                        "size": 100.0,
+                                                        "allocation": "weighted",
+                                                        "weights": {
+                                                          "TMF": 1.0
+                                                        },
+                                                        "symbol_filter": "TMF"
+                                                      }
+                                                    ]
+                                                  }
+                                                ]
+                                              }
+                                            ]
+                                          },
+                                          {
+                                            "type": "group",
+                                            "id": "baf7e011-7377-4e28-bdc9-f7f425aae8d2",
+                                            "description": "Else branch",
+                                            "children": [
+                                              {
+                                                "type": "group",
+                                                "id": "7304ac9a-5c6a-4732-aae2-2e7e665959a1",
+                                                "description": "Low Vol",
+                                                "children": [
+                                                  {
+                                                    "type": "group",
+                                                    "id": "dc66fa33-d8ec-4a22-9ff2-0c54fcbaf14b",
+                                                    "description": "Group: wt-cash-equal",
+                                                    "children": [
+                                                      {
+                                                        "type": "order",
+                                                        "id": "962e6c7a-65e2-49e9-97ce-0bea4c91e5f8",
+                                                        "description": "ProShares UltraPro QQQ",
+                                                        "side": "long",
+                                                        "size_type": "percent_equity",
+                                                        "size": 100.0,
+                                                        "allocation": "weighted",
+                                                        "weights": {
+                                                          "TQQQ": 1.0
+                                                        },
+                                                        "symbol_filter": "TQQQ"
+                                                      }
+                                                    ]
+                                                  }
+                                                ]
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "type": "group",
+                            "id": "3aef597c-a531-401c-abb0-4ca536bf810e",
+                            "description": "Else branch",
+                            "children": [
+                              {
+                                "type": "order",
+                                "id": "5f0d676e-5b74-42b8-a2e8-f8e20a3bdd33",
+                                "description": "ProShares UltraPro QQQ",
+                                "side": "long",
+                                "size_type": "percent_equity",
+                                "size": 100.0,
+                                "allocation": "weighted",
+                                "weights": {
+                                  "TQQQ": 1.0
+                                },
+                                "symbol_filter": "TQQQ"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "group",
+            "id": "1b00c12e-47d3-4b72-8a20-ad22f8cda3d2",
+            "description": "Else branch",
+            "children": [
+              {
+                "type": "group",
+                "id": "efa5a12f-c077-4d16-9df9-411cd9ea2e78",
+                "description": "Rates are going up",
+                "children": [
+                  {
+                    "type": "group",
+                    "id": "abe0d995-1c42-4f56-b6c4-5618c3de91b3",
+                    "description": "Group: wt-cash-equal",
+                    "children": [
+                      {
+                        "type": "condition",
+                        "id": "b9225974-476b-44ed-b4f9-53017a0e51b6",
+                        "description": "Conditional logic 4",
+                        "children": [
+                          {
+                            "type": "condition",
+                            "id": "fd2d4bb7-4a03-42e2-ac1b-ebb6303008a5",
+                            "description": "Condition: cumulative-return gte 0",
+                            "lhs": {
+                              "name": "cumulative-return",
+                              "args": {
+                                "period": 2
+                              },
+                              "symbol": "BND"
+                            },
+                            "operator": "gte",
+                            "children": [
+                              {
+                                "type": "group",
+                                "id": "c6c79a69-0326-4da8-a46d-302fb31a717c",
+                                "description": "Stopped short term, go 50/50",
+                                "children": [
+                                  {
+                                    "type": "weight",
+                                    "id": "3c5f195b-068b-4b4b-b2f3-757f578e6a54",
+                                    "description": "Weighted allocation (total: 100.0%)",
+                                    "allocation_method": "explicit_weights",
+                                    "weights": {
+                                      "TQQQ": 0.55
+                                    },
+                                    "children": [
+                                      {
+                                        "type": "order",
+                                        "id": "c7d34dac-62c8-4322-a26a-0f52e54b219f",
+                                        "description": "ProShares UltraPro QQQ",
+                                        "side": "long",
+                                        "size_type": "percent_equity",
+                                        "size": 55.00000000000001,
+                                        "allocation": "weighted",
+                                        "weights": {
+                                          "TQQQ": 0.30250000000000005
+                                        },
+                                        "symbol_filter": "TQQQ"
+                                      },
+                                      {
+                                        "type": "group",
+                                        "id": "ee781116-05e5-44bb-8338-c7fa4c752bac",
+                                        "description": "Interest Rate Safe Haven",
+                                        "children": [
+                                          {
+                                            "type": "weight",
+                                            "id": "86b24ab4-2252-4034-9023-c0f404c2bd0b",
+                                            "description": "Inverse volatility allocation (4 assets)",
+                                            "allocation_method": "inverse_volatility",
+                                            "universe": [
+                                              "IEF",
+                                              "UUP",
+                                              "GLD",
+                                              "TMF"
+                                            ],
+                                            "children": [
+                                              {
+                                                "type": "order",
+                                                "id": "9cc543aa-ecfc-45ab-b0b9-1cd363a9c57b",
+                                                "description": "iShares 7-10 Year Treasury Bond ETF",
+                                                "side": "long",
+                                                "size_type": "percent_equity",
+                                                "size": 100.0,
+                                                "allocation": "weighted",
+                                                "weights": {
+                                                  "IEF": 1.0
+                                                },
+                                                "symbol_filter": "IEF"
+                                              },
+                                              {
+                                                "type": "order",
+                                                "id": "45ba77b3-9fe8-4540-a634-482d38503f0b",
+                                                "description": "Invesco DB US Dollar Index Bullish Fund",
+                                                "side": "long",
+                                                "size_type": "percent_equity",
+                                                "size": 100.0,
+                                                "allocation": "weighted",
+                                                "weights": {
+                                                  "UUP": 1.0
+                                                },
+                                                "symbol_filter": "UUP"
+                                              },
+                                              {
+                                                "type": "order",
+                                                "id": "e492e4c4-2621-48df-b082-125c82926921",
+                                                "description": "SPDR Gold Shares",
+                                                "side": "long",
+                                                "size_type": "percent_equity",
+                                                "size": 100.0,
+                                                "allocation": "weighted",
+                                                "weights": {
+                                                  "GLD": 1.0
+                                                },
+                                                "symbol_filter": "GLD"
+                                              },
+                                              {
+                                                "type": "order",
+                                                "id": "d4aaee0e-c3f4-401b-9c8f-0a8e1755f5cf",
+                                                "description": "Direxion Daily 20+ Year Treasury Bull 3X Shares",
+                                                "side": "long",
+                                                "size_type": "percent_equity",
+                                                "size": 100.0,
+                                                "allocation": "weighted",
+                                                "weights": {
+                                                  "TMF": 1.0
+                                                },
+                                                "symbol_filter": "TMF"
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "type": "group",
+                            "id": "05734435-255a-447d-ba9a-1afe61e37256",
+                            "description": "Else branch",
+                            "children": [
+                              {
+                                "type": "group",
+                                "id": "c1eaef13-c6df-44ed-b63f-ef9192d86f79",
+                                "description": "Interest Rate Safe Haven",
+                                "children": [
+                                  {
+                                    "type": "weight",
+                                    "id": "b1460bc0-f3c6-498d-bb87-6e032798f83b",
+                                    "description": "Inverse volatility allocation (5 assets)",
+                                    "allocation_method": "inverse_volatility",
+                                    "universe": [
+                                      "IEF",
+                                      "UUP",
+                                      "GLD",
+                                      "TMF",
+                                      "TQQQ"
+                                    ],
+                                    "children": [
+                                      {
+                                        "type": "order",
+                                        "id": "aba2a8d0-31ec-4ead-aca2-d8b31f07cc04",
+                                        "description": "iShares 7-10 Year Treasury Bond ETF",
+                                        "side": "long",
+                                        "size_type": "percent_equity",
+                                        "size": 100.0,
+                                        "allocation": "weighted",
+                                        "weights": {
+                                          "IEF": 1.0
+                                        },
+                                        "symbol_filter": "IEF"
+                                      },
+                                      {
+                                        "type": "order",
+                                        "id": "0106f066-7e11-48bc-b514-eef0546a5dd0",
+                                        "description": "Invesco DB US Dollar Index Bullish Fund",
+                                        "side": "long",
+                                        "size_type": "percent_equity",
+                                        "size": 100.0,
+                                        "allocation": "weighted",
+                                        "weights": {
+                                          "UUP": 1.0
+                                        },
+                                        "symbol_filter": "UUP"
+                                      },
+                                      {
+                                        "type": "order",
+                                        "id": "bd67bbfe-ab67-4d13-a2c9-1a9d9d6e1a00",
+                                        "description": "SPDR Gold Shares",
+                                        "side": "long",
+                                        "size_type": "percent_equity",
+                                        "size": 100.0,
+                                        "allocation": "weighted",
+                                        "weights": {
+                                          "GLD": 1.0
+                                        },
+                                        "symbol_filter": "GLD"
+                                      },
+                                      {
+                                        "type": "order",
+                                        "id": "8bdcecf4-b12d-4cd1-b072-12593b7d9b58",
+                                        "description": "Direxion Daily 20+ Year Treasury Bull 3X Shares",
+                                        "side": "long",
+                                        "size_type": "percent_equity",
+                                        "size": 100.0,
+                                        "allocation": "weighted",
+                                        "weights": {
+                                          "TMF": 1.0
+                                        },
+                                        "symbol_filter": "TMF"
+                                      },
+                                      {
+                                        "type": "order",
+                                        "id": "8ac1a3a1-90fc-4f6d-944b-665cdc803962",
+                                        "description": "ProShares UltraPro QQQ",
+                                        "side": "long",
+                                        "size_type": "percent_equity",
+                                        "size": 100.0,
+                                        "allocation": "weighted",
+                                        "weights": {
+                                          "TQQQ": 1.0
+                                        },
+                                        "symbol_filter": "TQQQ"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

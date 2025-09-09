@@ -1,0 +1,247 @@
+{
+  "meta": {
+    "name": "Bitcoin Strategy by Derecknielsen (Under Construction)",
+    "description": "Updated: 11/8/22",
+    "version": "1.0",
+    "source": "composer",
+    "source_id": "6nmjZHlRmBDGdwIpKycU",
+    "source_url": "https://app.composer.trade/symphony/6nmjZHlRmBDGdwIpKycU/details",
+    "category": "tactical",
+    "complexity_score": 7,
+    "created_at": "2025-06-25T20:54:04.911218Z",
+    "updated_at": "2025-06-25T20:54:04.911231Z"
+  },
+  "settings": {
+    "capital": 100000.0,
+    "currency": "USD",
+    "rebalance": "daily",
+    "fees": {
+      "percentage": 0.001
+    },
+    "slippage": {
+      "model": "percentage",
+      "value": 0.001
+    }
+  },
+  "universe": [
+    {
+      "symbol": "SPY",
+      "name": "",
+      "assetClass": "EQUITY"
+    },
+    {
+      "symbol": "MSTR",
+      "name": "MicroStrategy Incorporated Class A",
+      "assetClass": "EQUITY",
+      "exchange": "XNAS"
+    },
+    {
+      "symbol": "BITO",
+      "name": "",
+      "assetClass": "EQUITY"
+    },
+    {
+      "symbol": "BITI",
+      "name": "ProShares Short Bitcoin Strategy ETF",
+      "assetClass": "EQUITY",
+      "exchange": "ARCX"
+    },
+    {
+      "symbol": "BSV",
+      "name": "Vanguard Short-Term Bond ETF",
+      "assetClass": "EQUITY",
+      "exchange": "ARCX"
+    },
+    {
+      "symbol": "TBT",
+      "name": "ProShares UltraShort 20+ Year Treasury",
+      "assetClass": "EQUITY",
+      "exchange": "ARCX"
+    }
+  ],
+  "logic": {
+    "type": "group",
+    "id": "b9af2945-c2d0-44c9-b80d-f7795d9a4db5",
+    "description": "Group: wt-cash-equal",
+    "children": [
+      {
+        "type": "condition",
+        "id": "7972473f-99f0-456a-94ba-51e1aebf6cae",
+        "description": "Conditional logic 1",
+        "children": [
+          {
+            "type": "condition",
+            "id": "f3280c11-7899-4cfa-abf5-73c2065c5773",
+            "description": "Condition: current-price gt SPY",
+            "lhs": {
+              "name": "current-price",
+              "args": {},
+              "symbol": "SPY"
+            },
+            "operator": "gt",
+            "rhs": {
+              "name": "moving-average-price",
+              "args": {
+                "period": 200
+              },
+              "symbol": "SPY"
+            },
+            "children": [
+              {
+                "type": "order",
+                "id": "42558af0-834a-4abb-b457-459ab535ad06",
+                "description": "MicroStrategy Incorporated Class A",
+                "side": "long",
+                "size_type": "percent_equity",
+                "size": 100.0,
+                "allocation": "weighted",
+                "weights": {
+                  "MSTR": 1.0
+                },
+                "symbol_filter": "MSTR"
+              }
+            ]
+          },
+          {
+            "type": "group",
+            "id": "f6411ba5-896c-4aaf-b1db-a0be5272be1b",
+            "description": "Else branch",
+            "children": [
+              {
+                "type": "group",
+                "id": "9526bd2b-37a8-48a0-89d4-99c3ca398d58",
+                "description": "Group: wt-cash-equal",
+                "children": [
+                  {
+                    "type": "condition",
+                    "id": "576bc454-ecec-4b47-8ad0-604ca34204bf",
+                    "description": "Conditional logic 2",
+                    "children": [
+                      {
+                        "type": "condition",
+                        "id": "7a760cb8-3b95-4f37-b1e9-860f006b6f4b",
+                        "description": "Condition: current-price lt BITO",
+                        "lhs": {
+                          "name": "current-price",
+                          "args": {},
+                          "symbol": "BITO"
+                        },
+                        "operator": "lt",
+                        "rhs": {
+                          "name": "moving-average-price",
+                          "args": {
+                            "period": 15
+                          },
+                          "symbol": "BITO"
+                        },
+                        "children": [
+                          {
+                            "type": "group",
+                            "id": "f5c525aa-df10-4639-8549-40621b2e6dfb",
+                            "description": "Group: wt-cash-equal",
+                            "children": [
+                              {
+                                "type": "filter",
+                                "id": "fc99a74f-7d29-4aac-ad33-9b76ddd17563",
+                                "description": "Select top 1 by relative-strength-index",
+                                "universe": [
+                                  "BITI",
+                                  "BSV",
+                                  "TBT"
+                                ],
+                                "select": "top",
+                                "selection": {
+                                  "n": 1
+                                },
+                                "metric": {
+                                  "name": "rsi",
+                                  "args": {
+                                    "period": 10
+                                  }
+                                }
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "type": "group",
+                        "id": "37ad1f40-914f-4cb6-a5a2-20ced71c7c31",
+                        "description": "Else branch",
+                        "children": [
+                          {
+                            "type": "group",
+                            "id": "bb7d84fd-ddf9-4faa-aeb2-f1b49eb75a92",
+                            "description": "Group: wt-cash-equal",
+                            "children": [
+                              {
+                                "type": "condition",
+                                "id": "cda07f05-8e94-485f-b9e6-febb1b70599a",
+                                "description": "Conditional logic 3",
+                                "children": [
+                                  {
+                                    "type": "condition",
+                                    "id": "dc646a20-5911-48f0-b707-e6959fe3f9af",
+                                    "description": "Condition: relative-strength-index gt 59",
+                                    "lhs": {
+                                      "name": "rsi",
+                                      "args": {
+                                        "period": 10
+                                      },
+                                      "symbol": "BITO"
+                                    },
+                                    "operator": "gt",
+                                    "rhs": 59.0,
+                                    "children": [
+                                      {
+                                        "type": "order",
+                                        "id": "1d273461-4dad-4f66-be10-85797d908a4d",
+                                        "description": "ProShares Short Bitcoin Strategy ETF",
+                                        "side": "long",
+                                        "size_type": "percent_equity",
+                                        "size": 100.0,
+                                        "allocation": "weighted",
+                                        "weights": {
+                                          "BITI": 1.0
+                                        },
+                                        "symbol_filter": "BITI"
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "type": "group",
+                                    "id": "c68b9925-6441-4b4e-9d52-0a434ec5799a",
+                                    "description": "Else branch",
+                                    "children": [
+                                      {
+                                        "type": "order",
+                                        "id": "c9828747-2c50-491d-91f0-64f5c76f4b5a",
+                                        "description": "MicroStrategy Incorporated Class A",
+                                        "side": "long",
+                                        "size_type": "percent_equity",
+                                        "size": 100.0,
+                                        "allocation": "weighted",
+                                        "weights": {
+                                          "MSTR": 1.0
+                                        },
+                                        "symbol_filter": "MSTR"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
