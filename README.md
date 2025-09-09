@@ -14,7 +14,7 @@ Instructions For Position Matching:
 12. Change algorithm-type-name in /Lean/Launcher/config.json to "PositionSimulation".
 13. Launch task from VS code.
 14. Then convert position file inside "/Lean/Launcher/bin/debug/" folder using QC_position_converter.
-15. Now you have positions from quant connect, you can compare positions from both composer and quant connect in MS excel.
+15. Now you have positions from quant connect, user can compare positions from both composer and quant connect in MS excel.
 16. If any doubt, please contact us, we will setup simulation as per requirement.
 
 ========================================================================================================================================================================================
