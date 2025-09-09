@@ -1,18 +1,19 @@
 Instructions:
 
 1. main.py file contain algorithm to simulate positions from composer.
-2. Please copy content of main.py into /Lean/Algorithm.Python/main.py inside quant-connect environment.
-3. Change composer position file path inside /Lean/Algorithm.Python/main.py as per your requirement.
-4. User can find composer position files in "Composer Positions Files" folder.
-5. User can get position file name from "Strategy JSON File Name to Strategy Name and Composer Link Map" Given below this instructions for given strategy.
-6. Change next day close prices file path and next day open prices file path inside /Lean/Algorithm.Python/main.py as per your requirement.
-7. User can find next day open and close prices files in "Next Day Close Prices And Open Prices" Folder.
-8. Name format of next day open and close prices files is "next_day_open_prices_{strategy_position_file_name}.csv".
-9. Inside "initialize" method, please set initial capital (self.setCash()), start date and end date for backtest.
-10. User also have to load all symbols for startegy in quant connect like "self.spy_symbol = self.AddEquity("SPY", Resolution.Daily).Symbol \n self.spy_eq = self.AddEquity("SPY", Resolution.Daily) \n self.spy_eq.SetBuyingPowerModel(NullBuyingPowerModel())" inside "initialize" method.
-11. Change algorithm-type-name in /Lean/Launcher/config.json to "PositionSimulation".
-12. Launch task from VS code.
-13. If any doubt, please contact us, we will setup simulation as per requirement.
+2. Please add postions and open/close price files in "/Lean/Launcher/bin/debug/" folder.
+3. Please copy content of main.py into /Lean/Algorithm.Python/main.py inside quant-connect environment.
+4. Change composer position file path inside /Lean/Algorithm.Python/main.py as per your requirement.
+5. User can find composer position files in "Composer Positions Files" folder.
+6. User can get position file name from "Strategy JSON File Name to Strategy Name and Composer Link Map" Given below this instructions for given strategy.
+7. Change next day close prices file path and next day open prices file path inside /Lean/Algorithm.Python/main.py as per your requirement.
+8. User can find next day open and close prices files in "Next Day Close Prices And Open Prices" Folder.
+9. Name format of next day open and close prices files is "next_day_open_prices_{strategy_position_file_name}.csv".
+10. Inside "initialize" method, please set initial capital (self.setCash()), start date and end date for backtest.
+11. User also have to load all symbols for startegy in quant connect like "self.spy_symbol = self.AddEquity("SPY", Resolution.Daily).Symbol \n self.spy_eq = self.AddEquity("SPY", Resolution.Daily) \n self.spy_eq.SetBuyingPowerModel(NullBuyingPowerModel())" inside "initialize" method.
+12. Change algorithm-type-name in /Lean/Launcher/config.json to "PositionSimulation".
+13. Launch task from VS code.
+14. If any doubt, please contact us, we will setup simulation as per requirement.
 
 ========================================================================================================================================================================================
 
