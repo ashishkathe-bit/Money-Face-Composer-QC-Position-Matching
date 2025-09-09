@@ -102,7 +102,7 @@ class PositionSimulation(QCAlgorithm):
         self.first_day_flag = True
         
         # Read psotion data of stratgey
-        self.df = pd.read_csv("Bitcoin.csv")
+        self.df = pd.read_csv("spec_strat_01jymdx1bfex1r2ctetqmrfd4g_v1.csv")
         
         # Drop row at index 0
         self.df = self.df.drop(0) 
@@ -206,8 +206,8 @@ class PositionSimulation(QCAlgorithm):
             "date","symbol","quantity","avg_price","market_price",
             "holding_value","unrealized_pnl","portfolio_value","cash", "Percentage"
         ])
-        self.close_price = pd.read_csv("next_day_close_prices.csv", parse_dates=['Date'])
-        self.open_price = pd.read_csv("next_day_open_prices.csv", parse_dates=['Date'])
+        self.close_price = pd.read_csv("Next Day Close Prices And Open Prices/next_day_close_prices_spec_strat_01jymdx1bfex1r2ctetqmrfd4g_v1.csv", parse_dates=['Date'])
+        self.open_price = pd.read_csv("next_day_open_prices_spec_strat_01jymdx1bfex1r2ctetqmrfd4g_v1.csv", parse_dates=['Date'])
         # Initialize empty dictionary
         self.map_dict = {}
         self.exit_today = False
