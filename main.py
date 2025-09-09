@@ -219,14 +219,11 @@ class PositionSimulation(QCAlgorithm):
         if e.Status == OrderStatus.Filled:
             self.Debug(f"Order filled: {e.Symbol} - {e.Direction} {e.FillQuantity} @ {e.FillPrice} at {self.time}")
             
+            # Create dataframe for trade fill prices and save it
             row = [[e.Symbol, e.Direction, e.FillQuantity, e.FillPrice, self.time]]
-            
             temp_price_df = pd.DataFrame(row, columns=self.trade_prices_df_columns)
-            
-
             self.trade_prices_df = pd.concat([self.trade_prices_df, temp_price_df], ignore_index=True)
-            
-            self.trade_prices_df.to_csv("aa_prices.csv", index=False)
+            self.trade_prices_df.to_csv("trade_prices.csv", index=False)
 
     # Method to get next and next to next date
     def _next_two_csv_dates(self, today):
@@ -436,7 +433,7 @@ class PositionSimulation(QCAlgorithm):
         self.result_df = pd.concat([self.result_df, temp_row_df], ignore_index=True)
         
         # Save Datafrmae to storage
-        self.result_df.to_csv("a_daily_positions_pd.csv", index=False)
+        self.result_df.to_csv("simulated_daily_positions_QC.csv", index=False)
                 
     def OnEndOfDay(self):
         
