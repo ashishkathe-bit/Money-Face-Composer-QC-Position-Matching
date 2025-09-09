@@ -1,4 +1,4 @@
-Instructions:
+Instructions For Position Matching:
 
 1. main.py file contain algorithm to simulate positions from composer.
 2. Please add positions and open/close price files in "/Lean/Launcher/bin/debug/" folder.
