@@ -1,7 +1,7 @@
 Instructions:
 
 1. main.py file contain algorithm to simulate positions from composer.
-2. Please add postions and open/close price files in "/Lean/Launcher/bin/debug/" folder.
+2. Please add positions and open/close price files in "/Lean/Launcher/bin/debug/" folder.
 3. Please copy content of main.py into /Lean/Algorithm.Python/main.py inside quant-connect environment.
 4. Change composer position file path inside /Lean/Algorithm.Python/main.py as per your requirement.
 5. User can find composer position files in "Composer Positions Files" folder.
