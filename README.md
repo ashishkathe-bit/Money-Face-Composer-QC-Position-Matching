@@ -1,8 +1,8 @@
 Instructions For Position Matching:
 
-1. main.py file contain algorithm to simulate positions from composer.
+1. "Position Match Main File/main.py" file contain algorithm to simulate positions from composer.
 2. Please add positions and open/close price files in "/Lean/Launcher/bin/debug/" folder.
-3. Please copy content of main.py into /Lean/Algorithm.Python/main.py inside quant-connect environment.
+3. Please copy content of "Position Match Main File/main.py" into /Lean/Algorithm.Python/main.py inside quant-connect environment.
 4. Change composer position file path inside /Lean/Algorithm.Python/main.py as per your requirement.
 5. User can find composer position files in "Composer Positions Files" folder.
 6. User can get position file name from "Strategy JSON File Name to Strategy Name and Composer Link Map" Given below this instructions for given strategy.
