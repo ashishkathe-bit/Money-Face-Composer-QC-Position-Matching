@@ -11,6 +11,8 @@ Instructions:
 9. Change algorithm-type-name in /Lean/Launcher/config.json to "PositionSimulation".
 10. Launch task from VS code.
 
+============================================================================================================================================================================================================================
+
 Strategy Position File Name to Strategy Name and Composer Link Map:
 
 Position File Name : spec_strat_01jyjjjhe3esqbe9h2vj9j50cs_v1.csv, Strategy Name: BB-XM NASDAQ-X ||| Deez ||| 29JUN2023, Source URL: https://app.composer.trade/symphony/1hoPN3tFE0aDY3aiZtxT/details 
